@@ -1,3 +1,112 @@
+@red_color: red;
+@default-font-family: 'Abel', sans-serif;
+@default-font-color: rgba(0, 0, 0, 0.54);
+html {
+	font-family: @default-font-family;
+	font-size: 10px;
+	color: @default-font-color;
+}
 h1 {
-	color: red;
+	font-size: 6em;
+	font-weight: 300;
+	text-align: center;
+	line-height: 0.8em;
+}
+body {
+	margin: 0;
+	display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+  	min-height: 100vh;
+  	-webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+}
+.content-wrapper {
+	flex: 1;
+}
+
+.cities-wrapper {
+	max-width: 800px;
+	margin: 0 auto;
+	.city-list {
+		list-style-type: none;
+		padding: 0;
+		
+		&-item {
+			display: -ms-flexbox;
+    		display: -webkit-flex;
+    		display: flex;
+    		-webkit-flex-direction: row;
+    		-ms-flex-direction: row;
+    		flex-direction: row;
+			-webkit-justify-content: center;
+    		-ms-flex-pack: center;
+    		justify-content: center;
+			width: 100%;
+			font-size: 1.8em;
+			margin-bottom: 10px;
+    		&-name {
+				-webkit-flex: 1 1 auto;
+    			-ms-flex: 1 1 auto;
+				flex: 1 1 auto;
+				-webkit-align-self: center;
+    			-ms-flex-item-align: center;
+    			align-self: center;
+				font-weight: bold;
+				text-transform: uppercase;
+				padding-left: 10px;
+    		}
+
+    		&-temp {
+				display: -ms-flexbox;
+    			display: -webkit-flex;
+    			display: flex;
+    			-webkit-flex-direction: column;
+    			-ms-flex-direction: column;
+    			flex-direction: column;
+    			-webkit-justify-content: center;
+    			-ms-flex-pack: center;
+    			justify-content: center;
+    			-webkit-align-items: flex-end;
+    			-ms-flex-align: end;
+    			align-items: flex-end;
+    			padding-right: 10px;
+    		}
+		}
+	}
+}
+
+.content-footer {
+	text-align: center;
+	font-size: 1.2em;
+}
+
+.googlemap-wrapper {
+    height: 400px;
+    width: 100%;
+}
+
+.loader {
+    border: 5px solid #f3f3f3;
+    -webkit-animation: spin 1s linear infinite;
+    animation: spin 1s linear infinite;
+    border-top: 5px solid #555;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	margin-left: -25px;
+	margin-top: -25px;
+}
+
+@keyframes spin {
+    0% {
+    	transform: rotate(0deg);
+    }
+    100% {
+    	transform: rotate(360deg);
+    }
 }

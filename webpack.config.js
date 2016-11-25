@@ -1,24 +1,44 @@
+var webpack             = require("webpack"),
+    path                = require('path'),
+    ExtractTextPlugin   = require("extract-text-webpack-plugin");
+
 module.exports = {  
-    entry: [
-        './src/app.ts'
-    ],
+    entry: {
+        main: './src/scripts/app',
+    },
     output: {
-        publicPath: './public',
+        path: './public',
+        publicPath: '/public',
         filename: 'bundle.js'
     },
     resolve: {
         extensions: ['', '.webpack.js', '.web.js', '.ts', '.js']
     },
     module: {
+        preLoaders: [
+            {
+                test: /\.ts$/,
+                loader: 'tslint'
+            }
+        ],
         loaders: [
             {
                 test: /\.ts$/,
                 loader: 'ts-loader'
             },
-            // { 
-            //     test: /\.less$/,
-            //     loader: "style!css!autoprefixer!less"
-            // }
+            { 
+                test: /\.less$/,
+                loader: ExtractTextPlugin.extract('style', 'css!less?resolve url')
+            }
         ]
+    },
+    plugins: [
+        new ExtractTextPlugin('main.css'),
+        // new webpack.optimize.UglifyJsPlugin({minimize: true})
+    ],
+    tslint: {
+        emitErrors: true,
+        failOnHint: true,
+        configuration: require('./tslint.json')
     }
 }
