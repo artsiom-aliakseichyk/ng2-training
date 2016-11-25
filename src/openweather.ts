@@ -1,19 +1,40 @@
-import { Coords } from "./interfaces";
+import { Coords, Forecast } from "./interfaces";
+
+
 class openWeather {
-	private API_KEY:string = '096952b48ceb2e1447ba8f5d55f8bda8';
+	
+	constructor() {}
 
-	constructor() {
-
+	retrievePosition(coords: Coords): Coords {
+		return {
+			longitude: coords.longitude,
+			latitude: coords.latitude
+		}
 	}
 
-	getWeather(coords: Coords) {
-		fetch('http://api.openweathermap.org/data/2.5/find?lat='
-			+ /*coords.latitude*/53.9 + '&lon='
-			+ /*coords.longitude*/27.4 + '&cnt=50&APPID=' + this.API_KEY)
-			.then(response => response.json())
-			.then(data => console.log(data))
-			.catch(error => console.log(error));
+	getWeatherData(coords: Coords):Promise<Forecast> {
+		const API_KEY:string = '096952b48ceb2e1447ba8f5d55f8bda8';
+		return new Promise(function(resolve, reject) {
+			fetch('http://api.openweathermap.org/data/2.5/find?lat='
+				+ coords.latitude + '&lon='
+				+ coords.longitude + '&cnt=50&APPID=' + API_KEY + "&units=metric")
+				.then(response => response.json())
+				.then(data => resolve(data))
+				.catch(error => Error("Error fetching data"));
+		})
 	}
+
+	getLocation():Promise<Coords> {
+		return new Promise((resolve, reject) => {
+			navigator.geolocation.getCurrentPosition((position) => resolve(this.retrievePosition(position.coords)),
+			 () => {
+			 	reject(Error("can't get your location, enable HTML5 features"))
+			}, {
+				enableHighAccuracy: true
+			})
+		})
+	}
+
 }
 
 export { openWeather };

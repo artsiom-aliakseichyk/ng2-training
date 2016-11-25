@@ -1,17 +1,18 @@
 import "./styles/main.less";
 
-import { getCurrentLocation as geo} from './getCurrentLocation'
 import { openWeather } from './openweather';
+import { renderer } from './renderer';
+import { Coords, Forecast } from "./interfaces";
+
 window.onload = () => {
-	console.log("HELLO WORLD!");
-	let location = new geo();
 	let weather = new openWeather();
 
-	let coordinates = location.getPosition();
-	weather.getWeather({
-		longitude: 13,
-		latitude: 10
-	});
+	weather.getLocation().then(location => getWeatherData(location));
 
-	console.log();
+	function getWeatherData(data: Coords) {
+		weather.getWeatherData(data).then(response => renderer(response));
+	}
+
+	//TODO google maps integration
 }
+

@@ -1,7 +1,6 @@
 'use strict';
-var webpack = require("webpack");
-
-var ExtractTextPlugin = require("extract-text-webpack-plugin");
+var webpack             = require("webpack"),
+    ExtractTextPlugin   = require("extract-text-webpack-plugin");
 
 module.exports = {  
     entry: [
@@ -23,14 +22,12 @@ module.exports = {
             },
             { 
                 test: /\.less$/,
-                // loader: 'style!css!less'
                 loader: ExtractTextPlugin.extract('style', 'css!less?resolve url')
             }
         ]
     },
     plugins: [
         new ExtractTextPlugin('main.css'),
-        // module.exports.optimize.UglifyJsPlugin({minimize: true})
-        new webpack.optimize.UglifyJsPlugin({minimize: true})
+        // new webpack.optimize.UglifyJsPlugin({minimize: true})
     ]
 }
