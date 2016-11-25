@@ -1,11 +1,11 @@
-'use strict';
 var webpack             = require("webpack"),
+    path                = require('path'),
     ExtractTextPlugin   = require("extract-text-webpack-plugin");
 
 module.exports = {  
-    entry: [
-        './src/app.ts'
-    ],
+    entry: {
+        main: './src/scripts/app',
+    },
     output: {
         path: './public',
         publicPath: '/public',
@@ -15,6 +15,12 @@ module.exports = {
         extensions: ['', '.webpack.js', '.web.js', '.ts', '.js']
     },
     module: {
+        preLoaders: [
+            {
+                test: /\.ts$/,
+                loader: 'tslint'
+            }
+        ],
         loaders: [
             {
                 test: /\.ts$/,
@@ -29,5 +35,10 @@ module.exports = {
     plugins: [
         new ExtractTextPlugin('main.css'),
         // new webpack.optimize.UglifyJsPlugin({minimize: true})
-    ]
+    ],
+    tslint: {
+        emitErrors: true,
+        failOnHint: true,
+        configuration: require('./tslint.json')
+    }
 }
