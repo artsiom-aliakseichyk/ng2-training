@@ -4,8 +4,9 @@
   "description": "angular2 training",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev-server": "webpack-dev-server --progress --colors --open",
+    "postinstall": "webpack-dev-server --progress --colors --inline --open  --watch",
+    "devServer": "webpack-dev-server --progress --colors --inline --open",
+    "devBuild": "webpack --watch",
     "build": "webpack"
   },
   "keywords": [
@@ -22,6 +23,7 @@
     "less-loader": "^2.2.3",
     "style-loader": "^0.13.1",
     "typescript": "^2.0.10",
+    "webpack": "^1.13.3",
     "webpack-dev-server": "^1.16.2"
   },
   "dependencies": {

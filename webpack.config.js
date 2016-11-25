@@ -1,9 +1,15 @@
+'use strict';
+var webpack = require("webpack");
+
+var ExtractTextPlugin = require("extract-text-webpack-plugin");
+
 module.exports = {  
     entry: [
         './src/app.ts'
     ],
     output: {
-        publicPath: './public',
+        path: './public',
+        publicPath: '/public',
         filename: 'bundle.js'
     },
     resolve: {
@@ -15,10 +21,16 @@ module.exports = {
                 test: /\.ts$/,
                 loader: 'ts-loader'
             },
-            // { 
-            //     test: /\.less$/,
-            //     loader: "style!css!autoprefixer!less"
-            // }
+            { 
+                test: /\.less$/,
+                // loader: 'style!css!less'
+                loader: ExtractTextPlugin.extract('style', 'css!less?resolve url')
+            }
         ]
-    }
+    },
+    plugins: [
+        new ExtractTextPlugin('main.css'),
+        // module.exports.optimize.UglifyJsPlugin({minimize: true})
+        new webpack.optimize.UglifyJsPlugin({minimize: true})
+    ]
 }
