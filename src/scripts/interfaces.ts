@@ -4,15 +4,14 @@ export interface Coords {
 }
 
 
-export interface Forecast extends cityDetails {
+export interface Forecast {
 	message: string;
 	cod: string;
 	count: number;
 	list: cityDetails[];
-	
 }
 
-export interface cityDetails {
+interface cityDetails {
 	id: number;
 	name: string;
 	coord: {
