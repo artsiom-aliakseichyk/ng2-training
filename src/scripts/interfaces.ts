@@ -4,10 +4,14 @@ export interface Coords {
 }
 
 
-export interface Forecast {
+export interface Forecast extends List {
 	message: string;
 	cod: string;
 	count: number;
+	
+}
+
+interface List {
 	list: {
 		id: number;
 		name: string;
@@ -26,11 +30,4 @@ export interface Forecast {
 			main: string; 
 		}[]
 	}[]
-}
-
-export interface CityForecast {
-	name: string;
-	temp: number;
-	temp_min: number;
-	temp_max: number;
 }

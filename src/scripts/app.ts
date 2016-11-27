@@ -5,7 +5,7 @@ import { renderer } from './renderer';
 import { Coords, Forecast } from "./interfaces";
 
 window.onload = () => {
-    getLocation().then(location => fetchWeatherData(location));
+    getLocation().then(location => renderWeatherData(location));
 }
 
 function getLocation(): Promise<Coords> {
@@ -26,7 +26,7 @@ function retrievePosition(coords: Coords) {
     }
 }
 
-function fetchWeatherData(location: Coords) {
+function renderWeatherData(location: Coords) {
     let weather = new OpenWeather(location.latitude, location.longitude);
     weather.getWeatherData().then(response => renderer(response, location));
 }
