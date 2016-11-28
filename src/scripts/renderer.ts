@@ -15,9 +15,9 @@ function renderer(data: Forecast, location: Coords) {
            "<li class='city-list-item'>" +
                 "<div class='city-list-item-name'>" + city.name + "</div>" +
                 "<div class='city-list-item-temp'>" +
-                    "<div class='city-list-item-temp-min'>" + checkSign(city.main.temp_min) + "</div>" +
-                    "<div class='city-list-item-temp-avg'>" + checkSign(city.main.temp) + "</div>" +
-                    "<div class='city-list-item-temp-max'>" + checkSign(city.main.temp_max) + "</div>" +
+                    "<div class='city-list-item-temp-min'>Min.temp: " + checkSign(city.main.temp_min) + "</div>" +
+                    "<div class='city-list-item-temp-avg'>Avg.temp: " + checkSign(city.main.temp) + "</div>" +
+                    "<div class='city-list-item-temp-max'>Max.temp: " + checkSign(city.main.temp_max) + "</div>" +
                 "</div>" +
             "</li>";
 
@@ -53,7 +53,7 @@ function renderer(data: Forecast, location: Coords) {
 
 function checkSign(value: number): string {
     let strValue = value.toString()
-    value > 0 ? strValue = "+" + strValue : strValue = "-" + strValue;
+    value > 0 ? strValue = "+" + strValue : strValue = " " + strValue;
     return strValue;
 }
 
