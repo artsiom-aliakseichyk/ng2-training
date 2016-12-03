@@ -1,0 +1,10 @@
+<main class="content-wrapper weather-main">
+	<div class='cities-wrapper'>
+		<weather-city-page *ngFor="let page of cityDetails; let i = index" [cityDetails]="page" [ngClass]="{'active-page': i == 0}" class="city-list-page"></weather-city-page>
+<!-- 		<ul class='city-list'>
+			<weather-city-item *ngFor="let city of cityDetails" [cityDetails]="city"></weather-city-item>
+		</ul> -->
+		<weather-paginator [cityDetails]="cityDetails"></weather-paginator>
+	</div>
+	<div class="loader" [style.display]="cityDetails ? 'none': 'block'"></div>
+</main>

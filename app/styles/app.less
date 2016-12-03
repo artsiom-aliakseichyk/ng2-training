@@ -1,4 +1,3 @@
-@red_color: red;
 @default-font-family: 'Abel', sans-serif;
 @default-font-color: rgba(0, 0, 0, 0.54);
 html {
@@ -6,6 +5,11 @@ html {
 	font-size: 10px;
 	color: @default-font-color;
 }
+
+html, body {
+    height: 100%;
+}
+
 h1 {
 	font-size: 6em;
 	font-weight: 300;
@@ -17,7 +21,6 @@ body {
 	display: -ms-flexbox;
     display: -webkit-flex;
     display: flex;
-  	min-height: 100vh;
   	-webkit-flex-direction: column;
     -ms-flex-direction: column;
     flex-direction: column;
@@ -31,7 +34,7 @@ body {
 	margin: 0 auto;
     .city-list-page {
         display: none;
-        &.show {
+        &.active-page {
             display: block;
         }
     }

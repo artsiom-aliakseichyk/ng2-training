@@ -5,5 +5,6 @@
 
 ```
 npm install
+npm run
 ```
-Will run webpack-dev-server on postinstall.
+

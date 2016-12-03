@@ -4,28 +4,35 @@ export interface Coords {
 }
 
 
-export interface Forecast {
+export interface Forecast extends cityList{
 	message: string;
 	cod: string;
 	count: number;
-	list: cityDetails[];
 }
 
-interface cityDetails {
+export interface cityDetails {
 	id: number;
 	name: string;
-	coord: {
+	coord?: {
 		lat: number;
 		lon: number;
 	};
 	main: {
 		temp: number;
-		humidity: number;
-		pressure: number;
+		humidity?: number;
+		pressure?: number;
 		temp_max: number;
 		temp_min: number;
 	};
-	weather: {
+	weather?: {
 		main: string; 
 	}[]
+}
+
+export interface cityList {
+	list: cityDetails[];
+}
+
+export interface cityPage {
+	city: cityDetails;
 }
