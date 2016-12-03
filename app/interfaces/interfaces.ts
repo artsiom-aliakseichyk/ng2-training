@@ -3,36 +3,24 @@ export interface Coords {
 	latitude: number;
 }
 
-
-export interface Forecast extends cityList{
-	message: string;
-	cod: string;
-	count: number;
-}
-
-export interface cityDetails {
+export interface cityDetails extends weatherData {
 	id: number;
 	name: string;
-	coord?: {
+	coord: {
 		lat: number;
 		lon: number;
 	};
-	main: {
-		temp: number;
-		humidity?: number;
-		pressure?: number;
-		temp_max: number;
-		temp_min: number;
-	};
-	weather?: {
+	weather: {
 		main: string; 
 	}[]
 }
 
-export interface cityList {
-	list: cityDetails[];
-}
-
-export interface cityPage {
-	city: cityDetails;
+interface weatherData {
+	main: {
+		temp: number;
+		humidity: number;
+		pressure: number;
+		temp_max: number;
+		temp_min: number;
+	}
 }

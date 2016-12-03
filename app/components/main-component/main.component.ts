@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { WeatherApiService } from '../../services/weather-api.service';
 import GoogleMapService from '../../services/google-map-init.service';
-import { cityDetails, Coords, cityPage } from '../../interfaces/interfaces';
+import { cityDetails, Coords } from '../../interfaces/interfaces';
 
 @Component({
     selector: 'weather-main',

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http, Response, URLSearchParams } from '@angular/http';
-import { Forecast, Coords, cityDetails } from '../interfaces/interfaces';
+import { Coords, cityDetails } from '../interfaces/interfaces';
 import { CONSTS } from '../config/constants';
 import { Observable }     from 'rxjs/Observable';
 
