@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 import { cityDetails } from '../../interfaces/interfaces';
 
@@ -10,23 +10,14 @@ import { cityDetails } from '../../interfaces/interfaces';
 })
 
 export class WeatherCityPaginatorComponent {
+    pageToShow: number = 0;
     @Input()
     cityDetails: cityDetails;
 
-    setPage(pageNum: number) {
-        console.log(pageNum);
+    @Output() changePage = new EventEmitter<number>();
 
-        // let pageTarget = event.target as HTMLElement;
-        // let pageNumTarget: number = +pageTarget.innerHTML - 1;
-        // let pages = document.querySelectorAll(".city-list-page");
-        // let paginatorItems = document.querySelectorAll(".page");
-
-        // for (let i = 0; i < pages.length; i++) {
-        //     pages[i].className = "city-list-page";
-        //     paginatorItems[i].className = "page";
-        // }
-
-        // pages[pageNumTarget].className += " active-page";
-        // paginatorItems[pageNumTarget].className += " active-page";
+    getPageNum(pageNum: number) {
+        this.pageToShow = pageNum;
+        this.changePage.emit(pageNum);
     }
 }

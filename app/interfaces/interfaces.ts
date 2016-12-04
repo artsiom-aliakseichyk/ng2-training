@@ -3,24 +3,26 @@ export interface Coords {
 	latitude: number;
 }
 
-export interface cityDetails extends weatherData {
+export interface cityDetails {
 	id: number;
 	name: string;
 	coord: {
 		lat: number;
 		lon: number;
 	};
+	main: weatherData
 	weather: {
 		main: string; 
 	}[]
 }
 
 interface weatherData {
-	main: {
-		temp: number;
-		humidity: number;
-		pressure: number;
-		temp_max: number;
-		temp_min: number;
-	}
+	temp: number;
+	humidity: number;
+	pressure: number;
+	temp_max: number;
+	temp_min: number;
+
 }
+
+

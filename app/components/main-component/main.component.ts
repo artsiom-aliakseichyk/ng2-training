@@ -14,7 +14,9 @@ import { Subscription }   from 'rxjs/Subscription';
 
 export class WeatherMainComponent implements OnInit, OnDestroy {
     cityDetails: cityDetails[][];
-    subscription: Subscription
+    subscription: Subscription;
+    pageToShow: number = 0;
+
     constructor(private WeatherApi: WeatherApiService,
                 private MapInit: GoogleMapService) {}
 
@@ -55,5 +57,9 @@ export class WeatherMainComponent implements OnInit, OnDestroy {
             }
         }
         return cityPage;
+    }
+
+    changePage(page: number) {
+        this.pageToShow = page;
     }
 }

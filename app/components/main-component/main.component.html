@@ -1,7 +1,9 @@
 <main class="content-wrapper weather-main">
 	<div class='cities-wrapper'>
-		<weather-city-page *ngFor="let page of cityDetails; let i = index" [cityDetails]="page" [ngClass]="{'active-page': i == 0, 'hidden-page': i != 0}"></weather-city-page>
-		<weather-paginator [cityDetails]="cityDetails"></weather-paginator>
+		<div  *ngFor="let page of cityDetails; let i = index">
+			<weather-city-page [cityDetails]="page" *ngIf="i == pageToShow"></weather-city-page>
+		</div>
+		<weather-paginator [cityDetails]="cityDetails" (changePage)="changePage($event)"></weather-paginator>
 	</div>
 	<div class="loader" [style.display]="cityDetails ? 'none': 'block'"></div>
 </main>
