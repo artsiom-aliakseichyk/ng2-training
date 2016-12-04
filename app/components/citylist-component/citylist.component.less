@@ -1,0 +1,45 @@
+.city-list {
+	list-style-type: none;
+	padding: 0;
+	&-item {
+		display: -ms-flexbox;
+    	display: -webkit-flex;
+    	display: flex;
+    	-webkit-flex-direction: row;
+    	-ms-flex-direction: row;
+    	flex-direction: row;
+		-webkit-justify-content: center;
+		-ms-flex-pack: center;
+		justify-content: center;
+		width: 100%;
+		font-size: 1.8em;
+		margin-bottom: 10px;
+		&-name {
+			-webkit-flex: 1 1 auto;
+			-ms-flex: 1 1 auto;
+			flex: 1 1 auto;
+			-webkit-align-self: center;
+			-ms-flex-item-align: center;
+			align-self: center;
+			font-weight: bold;
+			text-transform: uppercase;
+			padding-left: 10px;
+		}
+
+		&-temp {
+			display: -ms-flexbox;
+			display: -webkit-flex;
+    		display: flex;
+    		-webkit-flex-direction: column;
+    		-ms-flex-direction: column;
+    		flex-direction: column;
+    		-webkit-justify-content: center;
+    		-ms-flex-pack: center;
+    		justify-content: center;
+			-webkit-align-items: flex-end;
+			-ms-flex-align: end;
+			align-items: flex-end;
+			padding-right: 10px;
+		}
+	}
+}

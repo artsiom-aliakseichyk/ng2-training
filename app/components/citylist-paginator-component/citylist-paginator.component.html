@@ -2,7 +2,7 @@
 	<ul class="paginator-list">
 		<li class="page" 
 			*ngFor="let page of cityDetails;
-			let i = index" (click)="setPage($event)" 
+			let i = index" (click)="setPage(i)" 
 			[ngClass]="{'active-page': i == 0}">{{i + 1}}</li>
 	</ul>
 </div>

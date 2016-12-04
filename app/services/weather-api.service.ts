@@ -10,7 +10,7 @@ export class WeatherApiService {
 
     constructor(private http: Http) {}
 
-    getWeatherData(position: Coords): Observable<cityDetails[][]> {
+    public getWeatherData(position: Coords): Observable<cityDetails[]> {
         const API_KEY: string = CONSTS.API_KEY;
         const endPoint: string = 'find';
         const resultsNum = 50;
@@ -22,24 +22,11 @@ export class WeatherApiService {
         searchParams.set('cnt', CONSTS.ITEMS_IN_RESPONSE);
 
         return this.http.get(this.weatherURL + endPoint, {search: searchParams})
-                .map(this.extractData);
+                .map(this.prepareData);
     }
 
-    private extractData(response: Response): cityDetails[][] {
-        let cityDetails = response.json().list;
-        let cityPage: cityDetails[][] = [];
-        let cityPages: cityDetails;
-        let pageNum: number = 0;
-        cityPage.push([]);
-        for ( let i = 0; i < cityDetails.length; i++ ) {
-            cityPage[pageNum].push(cityDetails[i]);
-            if ((i !== 0 && (i + 1) % CONSTS.ITEMS_IN_PAGE === 0) || i === cityDetails.length - 1 ) {
-                if (cityDetails.length - 1 !== i) {
-                    cityPage.push([]);
-                    pageNum += 1;
-                }
-            }
-        }
-        return cityPage;
+    private prepareData(response: Response): cityDetails[] {
+        let cityDetails = response.json();
+        return cityDetails.list;
     }
 }

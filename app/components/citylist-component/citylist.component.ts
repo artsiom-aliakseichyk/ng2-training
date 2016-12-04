@@ -4,7 +4,8 @@ import { cityDetails } from '../../interfaces/interfaces';
 
 @Component({
     selector: 'weather-city-item',
-    templateUrl: './citylist.component.html'
+    templateUrl: './citylist.component.html',
+    styleUrls: ['./citylist.component.less']
 })
 
 export class WeatherCityComponent {

@@ -4,7 +4,9 @@ import { cityDetails } from '../../interfaces/interfaces';
 
 @Component({
     selector: 'weather-paginator',
-    templateUrl: './citylist-paginator.component.html'
+    templateUrl: './citylist-paginator.component.html',
+    styleUrls: ['./citylist-paginator.component.less']
+
 })
 
 export class WeatherCityPaginatorComponent {
@@ -13,18 +15,20 @@ export class WeatherCityPaginatorComponent {
 
     constructor() {}
 
-    setPage(event: Event) {
-        let pageTarget = event.target as HTMLElement;
-        let pageNumTarget: number = +pageTarget.innerHTML - 1;
-        let pages = document.querySelectorAll(".city-list-page");
-        let paginatorItems = document.querySelectorAll(".page");
+    setPage(pageNum: number) {
+        console.log(pageNum);
 
-        for (let i = 0; i < pages.length; i++) {
-            pages[i].className = "city-list-page";
-            paginatorItems[i].className = "page";
-        }
+        // let pageTarget = event.target as HTMLElement;
+        // let pageNumTarget: number = +pageTarget.innerHTML - 1;
+        // let pages = document.querySelectorAll(".city-list-page");
+        // let paginatorItems = document.querySelectorAll(".page");
 
-        pages[pageNumTarget].className += " active-page";
-        paginatorItems[pageNumTarget].className += " active-page";
+        // for (let i = 0; i < pages.length; i++) {
+        //     pages[i].className = "city-list-page";
+        //     paginatorItems[i].className = "page";
+        // }
+
+        // pages[pageNumTarget].className += " active-page";
+        // paginatorItems[pageNumTarget].className += " active-page";
     }
 }
