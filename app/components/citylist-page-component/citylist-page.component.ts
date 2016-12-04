@@ -10,6 +10,4 @@ import { cityDetails } from '../../interfaces/interfaces';
 export class WeatherCityPageComponent {
     @Input()
     cityDetails: cityDetails;
-
-    constructor() {}
 }

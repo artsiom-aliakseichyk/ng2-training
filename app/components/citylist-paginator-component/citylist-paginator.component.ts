@@ -13,8 +13,6 @@ export class WeatherCityPaginatorComponent {
     @Input()
     cityDetails: cityDetails;
 
-    constructor() {}
-
     setPage(pageNum: number) {
         console.log(pageNum);
 

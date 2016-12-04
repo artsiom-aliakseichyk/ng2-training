@@ -11,6 +11,4 @@ import { cityDetails } from '../../interfaces/interfaces';
 export class WeatherCityComponent {
     @Input()
     cityDetails: cityDetails;
-
-    constructor() {}
 }

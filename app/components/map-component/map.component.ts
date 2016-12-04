@@ -5,7 +5,4 @@ import { Component } from '@angular/core';
     templateUrl: './map.component.html',
     styleUrls: ['./map.component.less']
 })
-export class WeatherMapComponent {
-
-    constructor() {}
-}
+export class WeatherMapComponent {}
