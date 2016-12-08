@@ -13,9 +13,11 @@ import { Subscription }   from 'rxjs/Subscription';
 })
 
 export class WeatherMainComponent implements OnInit, OnDestroy {
-    cityDetails: cityDetails[][];
+    cityDetails: cityDetails[];
+    citiesToShow: cityDetails[];
+    numOfPages: number[];
     subscription: Subscription;
-    pageToShow: number = 0;
+    currentPage: number = 0;
 
     constructor(private WeatherApi: WeatherApiService,
                 private MapInit: GoogleMapService) {}
@@ -29,7 +31,9 @@ export class WeatherMainComponent implements OnInit, OnDestroy {
                     longitude: currenLocation.longitude
                 }).subscribe(
                     response => {
-                        this.cityDetails = this.extractData(response);
+                        this.cityDetails = response;
+                        this.citiesToShow = response.slice(0, CONSTS.ITEMS_IN_PAGE);
+                        this.numOfPages = this.arrayOfPages(Math.ceil(this.cityDetails.length / CONSTS.ITEMS_IN_PAGE));
                         this.MapInit.init(currenLocation);
                     });
                 }
@@ -41,25 +45,17 @@ export class WeatherMainComponent implements OnInit, OnDestroy {
         this.subscription.unsubscribe();
     }
 
-    private extractData(response: cityDetails[]): cityDetails[][] {
-        let cityDetails = response;
-        let cityPage: cityDetails[][] = [];
-        let cityPages: cityDetails;
-        let pageNum: number = 0;
-        cityPage.push([]);
-        for ( let i = 0; i < cityDetails.length; i++ ) {
-            cityPage[pageNum].push(cityDetails[i]);
-            if ((i !== 0 && (i + 1) % CONSTS.ITEMS_IN_PAGE === 0) || i === cityDetails.length - 1 ) {
-                if (cityDetails.length - 1 !== i) {
-                    cityPage.push([]);
-                    pageNum += 1;
-                }
-            }
-        }
-        return cityPage;
-    }
 
     changePage(page: number) {
-        this.pageToShow = page;
+        this.currentPage = page;
+        this.citiesToShow = this.cityDetails.slice(this.currentPage * CONSTS.ITEMS_IN_PAGE, (this.currentPage + 1) * CONSTS.ITEMS_IN_PAGE);
+    }
+
+    arrayOfPages(pages: number): number[] {
+        let pagesArr: number[] = [];
+        for (let i = 0; i < pages; i++) {
+            pagesArr.push(i);
+        }
+        return pagesArr;
     }
 }

@@ -1,5 +1,4 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-
 import { cityDetails } from '../../interfaces/interfaces';
 
 @Component({
@@ -12,7 +11,7 @@ import { cityDetails } from '../../interfaces/interfaces';
 export class WeatherCityPaginatorComponent {
     pageToShow: number = 0;
     @Input()
-    cityDetails: cityDetails;
+    numOfPages: number[];
 
     @Output() changePage = new EventEmitter<number>();
 

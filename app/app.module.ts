@@ -8,7 +8,6 @@ import { WeatherFooterComponent } from './components/footer-component/footer.com
 import { WeatherMainComponent } from './components/main-component/main.component';
 import { WeatherMapComponent } from './components/map-component/map.component';
 import { WeatherCityComponent } from './components/citylist-component/citylist.component';
-import { WeatherCityPageComponent } from './components/citylist-page-component/citylist-page.component';
 import { WeatherCityPaginatorComponent } from './components/citylist-paginator-component/citylist-paginator.component';
 // Services
 import { WeatherApiService } from './services/weather-api.service';
@@ -27,7 +26,6 @@ import GoogleMapService from './services/google-map-init.service';
         WeatherMainComponent,
         WeatherMapComponent,
         WeatherCityComponent,
-        WeatherCityPageComponent,
         WeatherCityPaginatorComponent
     ],
     providers: [

@@ -20,13 +20,7 @@ export class WeatherApiService {
         searchParams.set('lon', position.longitude.toString());
         searchParams.set('lat', position.latitude.toString());
         searchParams.set('cnt', CONSTS.ITEMS_IN_RESPONSE);
-
         return this.http.get(this.weatherURL + endPoint, {search: searchParams})
-                .map(this.prepareData);
-    }
-
-    private prepareData(response: Response): cityDetails[] {
-        let cityDetails = response.json();
-        return cityDetails.list;
+                .map(response => response.json());
     }
 }
