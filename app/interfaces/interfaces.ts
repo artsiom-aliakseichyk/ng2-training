@@ -13,7 +13,8 @@ export interface cityDetails {
 	main: weatherData
 	weather: {
 		main: string; 
-	}[]
+	}[];
+	dt: number;
 }
 
 interface weatherData {

@@ -1,4 +1,5 @@
 <main class="content-wrapper weather-main">
+	<city-data></city-data>
 	<div class='cities-wrapper'>
 		<weather-city-item *ngFor="let city of citiesToShow" [cityDetails]="city"></weather-city-item>
 		<weather-paginator [numOfPages]="numOfPages"  (changePage)="changePage($event)"></weather-paginator>
