@@ -17,6 +17,7 @@ import GoogleMapService from './services/google-map-init.service';
 import { TemperatureConverter } from './pipes/celsius2kelvin.pipe';
 import { FloorPipe } from './pipes/floor.pipe';
 import { GetCityWeather } from './pipes/getCityWeather.pipe';
+import { AddSignPipe } from './pipes/sign.pipe';
 
 @NgModule({
     imports: [
@@ -35,7 +36,8 @@ import { GetCityWeather } from './pipes/getCityWeather.pipe';
         // Pipes
         TemperatureConverter,
         FloorPipe,
-        GetCityWeather
+        GetCityWeather,
+        AddSignPipe
     ],
     providers: [
         WeatherApiService,
