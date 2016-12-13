@@ -5,6 +5,8 @@ import GoogleMapService from '../../services/google-map-init.service';
 import { cityDetails, Coords } from '../../interfaces/interfaces';
 import { CONSTS } from '../../config/constants';
 import { Subscription }   from 'rxjs/Subscription';
+import { Observable }     from 'rxjs/Observable';
+
 
 @Component({
     selector: 'weather-main',
@@ -18,6 +20,10 @@ export class WeatherMainComponent implements OnInit, OnDestroy {
     numOfPages: number[];
     subscription: Subscription;
     currentPage: number = 0;
+    geoposition: Promise<Position>;
+    weatherData: Observable<cityDetails[]>;
+    extractWeatherData: Observable<cityDetails[]>;
+
 
     constructor(private WeatherApi: WeatherApiService,
                 private MapInit: GoogleMapService) {}
@@ -25,16 +31,20 @@ export class WeatherMainComponent implements OnInit, OnDestroy {
     ngOnInit() {
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition((position: Position) => {
-                let currenLocation: Coords = position.coords;
+                let currentLocation: Coords = position.coords;
+                // this.weatherData = this.extractWeatherData = this.WeatherApi.getWeatherData({
+                //     latitude: currentLocation.latitude,
+                //     longitude: currentLocation.longitude
+                // });
                 this.subscription = this.WeatherApi.getWeatherData({
-                    latitude: currenLocation.latitude,
-                    longitude: currenLocation.longitude
+                    latitude: currentLocation.latitude,
+                    longitude: currentLocation.longitude
                 }).subscribe(
                     response => {
                         this.cityDetails = response;
                         this.citiesToShow = response.slice(0, CONSTS.ITEMS_IN_PAGE);
                         this.numOfPages = this.arrayOfPages(Math.ceil(this.cityDetails.length / CONSTS.ITEMS_IN_PAGE));
-                        this.MapInit.init(currenLocation);
+                        this.MapInit.init(currentLocation);
                     });
                 }
             );
