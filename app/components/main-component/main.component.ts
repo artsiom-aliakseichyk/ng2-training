@@ -23,6 +23,8 @@ export class WeatherMainComponent implements OnInit, OnDestroy {
     geoposition: Promise<Position>;
     weatherData: Observable<cityDetails[]>;
     extractWeatherData: Observable<cityDetails[]>;
+    pageStartItemIndex: number = 0;
+    pagesFinishItemIndex: number = CONSTS.ITEMS_IN_PAGE;
 
 
     constructor(private WeatherApi: WeatherApiService,
@@ -42,7 +44,6 @@ export class WeatherMainComponent implements OnInit, OnDestroy {
                 }).subscribe(
                     response => {
                         this.cityDetails = response;
-                        this.citiesToShow = response.slice(0, CONSTS.ITEMS_IN_PAGE);
                         this.numOfPages = this.arrayOfPages(Math.ceil(this.cityDetails.length / CONSTS.ITEMS_IN_PAGE));
                         this.MapInit.init(currentLocation);
                     });
@@ -58,7 +59,8 @@ export class WeatherMainComponent implements OnInit, OnDestroy {
 
     changePage(page: number) {
         this.currentPage = page;
-        this.citiesToShow = this.cityDetails.slice(this.currentPage * CONSTS.ITEMS_IN_PAGE, (this.currentPage + 1) * CONSTS.ITEMS_IN_PAGE);
+        this.pageStartItemIndex = this.currentPage * CONSTS.ITEMS_IN_PAGE;
+        this.pagesFinishItemIndex = (this.currentPage + 1) * CONSTS.ITEMS_IN_PAGE;
     }
 
     arrayOfPages(pages: number): number[] {

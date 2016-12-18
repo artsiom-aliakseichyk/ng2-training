@@ -1,7 +1,4 @@
 node_modules
-public
 .DS_store
-public
 dist
-
 npm-debug.log
