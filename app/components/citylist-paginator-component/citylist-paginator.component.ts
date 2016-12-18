@@ -1,10 +1,11 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 import { cityDetails } from '../../interfaces/interfaces';
 
 @Component({
     selector: 'weather-paginator',
     templateUrl: './citylist-paginator.component.html',
-    styleUrls: ['./citylist-paginator.component.less']
+    styleUrls: ['./citylist-paginator.component.less'],
+    changeDetection: ChangeDetectionStrategy.OnPush
 
 })
 
