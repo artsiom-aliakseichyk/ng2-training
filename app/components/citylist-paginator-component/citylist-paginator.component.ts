@@ -12,7 +12,7 @@ import { cityDetails } from '../../interfaces/interfaces';
 export class WeatherCityPaginatorComponent {
     pageToShow: number = 0;
     @Input()
-    numOfPages: number[];
+    pagesArr: number[];
 
     @Output() changePage = new EventEmitter<number>();
 

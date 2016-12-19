@@ -17,7 +17,8 @@ import { Observable }     from 'rxjs/Observable';
 export class WeatherMainComponent implements OnInit, OnDestroy {
     cityDetails: cityDetails[];
     citiesToShow: cityDetails[];
-    numOfPages: number[];
+    pagesArr: number[];
+    numOfPages: number;
     subscription: Subscription;
     currentPage: number = 0;
     geoposition: Promise<Position>;
@@ -44,8 +45,8 @@ export class WeatherMainComponent implements OnInit, OnDestroy {
                 }).subscribe(
                     response => {
                         this.cityDetails = response;
-                        console.log(this.cityDetails);
-                        this.numOfPages = this.arrayOfPages(Math.ceil(this.cityDetails.length / CONSTS.ITEMS_IN_PAGE));
+                        this.numOfPages = Math.ceil(this.cityDetails.length / CONSTS.ITEMS_IN_PAGE)
+                        this.pagesArr = this.arrayOfPages(this.numOfPages);
                         // this.MapInit.init(currentLocation);
                     });
             /*   }
@@ -57,22 +58,26 @@ export class WeatherMainComponent implements OnInit, OnDestroy {
         this.subscription.unsubscribe();
     }
 
-
     changePage(page: number) {
         this.currentPage = page;
         this.pageStartItemIndex = this.currentPage * CONSTS.ITEMS_IN_PAGE;
         this.pagesFinishItemIndex = (this.currentPage + 1) * CONSTS.ITEMS_IN_PAGE;
     }
+
     deleteCityInfo(id: number) {
+        let tempNumOfPages: number;
         for (let i = 0; i < this.cityDetails.length; i++) {
             if (this.cityDetails[i].id === id) {
                 this.cityDetails.splice(i, 1);
+                tempNumOfPages = Math.ceil(this.cityDetails.length / CONSTS.ITEMS_IN_PAGE);
+                if (tempNumOfPages !== this.numOfPages) {
+                    this.pagesArr = this.arrayOfPages(tempNumOfPages);
+                }
             }
         }
     }
 
     changeFavStatus(itemToChange: emmitChangeFavObject) {
-        console.log(itemToChange);
         for (let i = 0; i < this.cityDetails.length; i++ ) {
             if (this.cityDetails[i].id === itemToChange.id) {
                 if (itemToChange.checkbox) {

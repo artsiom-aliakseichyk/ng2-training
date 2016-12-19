@@ -18,16 +18,8 @@ export class CityDataInfoComponent {
     constructor(private http: Http) {}
 
     getCityWeather(city: string) {
-        console.log(city);
         this.cityName = city;
         this.cityInfo = this.getObservableCityWeather(city);
-        // let searchParams = new URLSearchParams();
-        // searchParams.set('APPID', this.API_KEY);
-        // searchParams.set('q', city);
-        // this.http.get(this.weatherURL + this.endPoint, {search: searchParams})
-        //         .map(response => response.json().main).subscribe(response => {
-        //             console.log(response);
-        //         })
     }
 
     getObservableCityWeather(city: string): Observable<number> {

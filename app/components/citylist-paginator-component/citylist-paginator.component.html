@@ -1,7 +1,7 @@
 <div class='paginator-wrapper'>
 	<ul class="paginator-list">
 		<li class="page" 
-			*ngFor="let page of numOfPages;
+			*ngFor="let page of pagesArr;
 			let i = index" (click)="getPageNum(i)" 
 			[ngClass]="{'active-page': i == pageToShow}">{{i + 1}}</li>
 	</ul>

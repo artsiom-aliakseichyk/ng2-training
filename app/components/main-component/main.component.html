@@ -1,8 +1,9 @@
 <main class="content-wrapper weather-main">
 	<city-data></city-data>
 	<div class='cities-wrapper'>
+		<city-data-add></city-data-add>
 		<weather-city-item *ngFor="let city of cityDetails|slice:pageStartItemIndex:pagesFinishItemIndex" [cityDetails]="city" (deleteCityInfo)="deleteCityInfo($event)" (changeFavStatus)="changeFavStatus($event)"></weather-city-item>
-		<weather-paginator [numOfPages]="numOfPages"  (changePage)="changePage($event)"></weather-paginator>
+		<weather-paginator [pagesArr]="pagesArr"  (changePage)="changePage($event)"></weather-paginator>
 	</div>
 	<div class="loader" [style.display]="cityDetails ? 'none': 'block'"></div>
 </main>

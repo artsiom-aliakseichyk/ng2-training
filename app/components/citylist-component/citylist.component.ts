@@ -22,11 +22,5 @@ export class WeatherCityComponent {
 
     favCheckboxChange(event: checkboxEvent, id: number ) {
         this.changeFavStatus.emit({checkbox: event.target.checked, id: id});
-        if (event.target.checked) {
-            console.log("add to fav: ", id);
-        }
-        else {
-            console.log("delete from fav: ", id);
-        }
     }
 }
