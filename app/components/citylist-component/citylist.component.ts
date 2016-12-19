@@ -14,7 +14,7 @@ export class WeatherCityComponent {
     cityDetails: cityDetails;
 
     @Output() deleteCityInfo = new EventEmitter<number>();
-    @Output() changeFavStatus = new EventEmitter<emmitChangeFavObject >();
+    @Output() changeFavStatus = new EventEmitter<emmitChangeFavObject>();
 
     getIDtoDeleteCity(id: number) {
         this.deleteCityInfo.emit(id);

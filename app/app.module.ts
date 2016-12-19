@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule }  from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 // Components
 import { AppComponent } from './app.component';
 import { WeatherHeaderComponent } from './components/header-component/header.component';
@@ -25,7 +25,8 @@ import { AddSignPipe } from './pipes/sign.pipe';
     imports: [
         BrowserModule,
         HttpModule,
-        FormsModule
+        FormsModule,
+        ReactiveFormsModule
     ],
     declarations: [
         AppComponent,

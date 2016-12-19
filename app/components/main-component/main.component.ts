@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ChangeDetectorRef, NgZone } from '@angular/core';
 import { Response } from '@angular/http';
 import { WeatherApiService } from '../../services/weather-api.service';
 import GoogleMapService from '../../services/google-map-init.service';
@@ -20,6 +20,8 @@ export class WeatherMainComponent implements OnInit, OnDestroy {
     pagesArr: number[];
     numOfPages: number;
     subscription: Subscription;
+    zoneOnUnstable: Subscription;
+    zoneOnStable: Subscription;
     currentPage: number = 0;
     geoposition: Promise<Position>;
     weatherData: Observable<cityDetails[]>;
@@ -29,9 +31,22 @@ export class WeatherMainComponent implements OnInit, OnDestroy {
 
 
     constructor(private WeatherApi: WeatherApiService,
-                private MapInit: GoogleMapService) {}
+                private MapInit: GoogleMapService,
+                private cd: ChangeDetectorRef,
+                private zone: NgZone) {}
 
     ngOnInit() {
+        this.getCityList();
+        this.zoneStableCheck();
+    }
+
+    ngOnDestroy() {
+        this.subscription.unsubscribe();
+        this.zoneOnStable.unsubscribe();
+        this.zoneOnUnstable.unsubscribe();
+    }
+
+    getCityList() {
         if (navigator.geolocation) {
             /*navigator.geolocation.getCurrentPosition((position: Position) => {
                 let currentLocation: Coords = position.coords;
@@ -53,11 +68,6 @@ export class WeatherMainComponent implements OnInit, OnDestroy {
             );*/
         }
     }
-
-    ngOnDestroy() {
-        this.subscription.unsubscribe();
-    }
-
     changePage(page: number) {
         this.currentPage = page;
         this.pageStartItemIndex = this.currentPage * CONSTS.ITEMS_IN_PAGE;
@@ -74,6 +84,16 @@ export class WeatherMainComponent implements OnInit, OnDestroy {
                     this.pagesArr = this.arrayOfPages(tempNumOfPages);
                 }
             }
+        }
+    }
+
+    addCityInfo(cityInfo: cityDetails) {
+        let tempNumOfPages: number;
+        cityInfo.dt = Date.now() / 1000;
+        this.cityDetails.unshift(cityInfo);
+        tempNumOfPages = Math.ceil(this.cityDetails.length / CONSTS.ITEMS_IN_PAGE);
+        if (tempNumOfPages !== this.numOfPages) {
+            this.pagesArr = this.arrayOfPages(tempNumOfPages);
         }
     }
 
@@ -96,5 +116,25 @@ export class WeatherMainComponent implements OnInit, OnDestroy {
             pagesArr.push(i);
         }
         return pagesArr;
+    }
+
+    zoneStableCheck() {
+        let diffTime: number;
+        let initTime: number;
+        let now = performance && performance.now ? performance.now.bind(performance) : Date.now;
+
+        this.zoneOnUnstable = this.zone
+            .onUnstable
+            .subscribe((data: void) => {
+                diffTime = 0;
+                initTime = now();
+        });
+
+        this.zoneOnStable = this.zone
+            .onStable
+            .subscribe((data: void) => {
+                diffTime += (now() - initTime);
+                console.log('Change in: ', Math.floor(diffTime * 100) / 100);
+        });
     }
 }
