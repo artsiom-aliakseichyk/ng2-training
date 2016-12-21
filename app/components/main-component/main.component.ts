@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, ChangeDetectorRef, NgZone } from '@angular/core';
+import { Component, OnInit, OnDestroy, ChangeDetectorRef, NgZone, ChangeDetectionStrategy } from '@angular/core';
 import { Response } from '@angular/http';
 import { WeatherApiService } from '../../services/weather-api.service';
 import GoogleMapService from '../../services/google-map-init.service';
@@ -11,7 +11,8 @@ import { Observable }     from 'rxjs/Observable';
 @Component({
     selector: 'weather-main',
     templateUrl: './main.component.html',
-    styleUrls: ['./main.component.less']
+    styleUrls: ['./main.component.less'],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 
 export class WeatherMainComponent implements OnInit, OnDestroy {
@@ -69,7 +70,7 @@ export class WeatherMainComponent implements OnInit, OnDestroy {
                }
             );
         }
-        // this.cd.markForCheck();
+        this.cd.markForCheck();
     }
     changePage(page: number) {
         this.currentPage = page;

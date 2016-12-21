@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { Http, Response, URLSearchParams } from '@angular/http';
 import { CONSTS } from '../../config/constants';
 import { Observable }     from 'rxjs/Observable';
@@ -6,7 +6,8 @@ import { Observable }     from 'rxjs/Observable';
 @Component({
     selector: 'city-data',
     templateUrl: './citydata.component.html',
-    styleUrls: ['./citydata.component.less']
+    styleUrls: ['./citydata.component.less'],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 
 export class CityDataInfoComponent {

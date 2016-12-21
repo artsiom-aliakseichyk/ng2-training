@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
     selector: 'weather-map',
     templateUrl: './map.component.html',
-    styleUrls: ['./map.component.less']
+    styleUrls: ['./map.component.less'],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class WeatherMapComponent {}
