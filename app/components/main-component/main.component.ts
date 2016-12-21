@@ -38,8 +38,8 @@ export class WeatherMainComponent implements OnInit, OnDestroy {
 
     ngOnInit() {
         // this.cd.detach();
-        // setInterval(() => this.getCityList(), 5000);
-        this.getCityList();
+        setInterval(() => this.getCityList(), 5000);
+        // this.getCityList();
         this.zoneStableCheck();
     }
 
