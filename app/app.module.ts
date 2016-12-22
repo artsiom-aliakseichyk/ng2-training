@@ -20,6 +20,8 @@ import { TemperatureConverter } from './pipes/celsius2kelvin.pipe';
 import { FloorPipe } from './pipes/floor.pipe';
 import { GetCityWeather } from './pipes/getCityWeather.pipe';
 import { AddSignPipe } from './pipes/sign.pipe';
+// Directives
+import { TempColorDirective } from './directives/tempcolor.directive';
 
 @NgModule({
     imports: [
@@ -42,7 +44,9 @@ import { AddSignPipe } from './pipes/sign.pipe';
         TemperatureConverter,
         FloorPipe,
         GetCityWeather,
-        AddSignPipe
+        AddSignPipe,
+        // Directives
+        TempColorDirective
     ],
     providers: [
         WeatherApiService,

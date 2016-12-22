@@ -19,14 +19,15 @@ export class CityDataAddComponent implements OnInit {
         this.addCityForm = this.fb.group({
             name: ['', Validators.required],
             main: this.fb.group({
-                temp_min: [''],
-                temp: [''],
-                temp_max: ['']
+                temp_min: ['', Validators.required],
+                temp: ['', Validators.required],
+                temp_max: ['', Validators.required]
             })
         })
     }
 
-    addCity(data: cityDetails) {
+    addCity(data: cityDetails, isValid: boolean) {
+        // console.log(data, isValid);
         this.addCityInfo.emit(data);
     }
 }

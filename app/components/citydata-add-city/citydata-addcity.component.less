@@ -1,5 +1,33 @@
 .addcity-form {
+	.input-wrapper {
+		margin: 5px 0;
+	}
+	label {
+		font-size: 1.6em;
+		width: 105px;
+    	display: inline-block;
+    }
 	input {
 		font-size: 1.8em;
+		outline: 0;
+		&.ng-invalid.ng-touched {
+			border: 1px solid #ed4444
+			
+		}
+	}
+	.submit-button {
+		font-size: 1.5em;
+    	text-transform: uppercase;
+    	background: #1cbf4a;
+    	color: #fff;
+    	border-color: #fff;
+    	&:hover {
+    		background: #1b9e40;
+    	}
+    	&:disabled {
+    		color: rgba(0, 0, 0, 0.54);
+    		background: rgba(128, 128, 128, 0.38);
+    		cursor: default;
+    	}
 	}
 }
