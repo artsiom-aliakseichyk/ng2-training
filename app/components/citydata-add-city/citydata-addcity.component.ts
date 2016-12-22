@@ -27,7 +27,7 @@ export class CityDataAddComponent implements OnInit {
     }
 
     addCity(data: cityDetails, isValid: boolean) {
-        // console.log(data, isValid);
         this.addCityInfo.emit(data);
+        this.addCityForm.reset();
     }
 }

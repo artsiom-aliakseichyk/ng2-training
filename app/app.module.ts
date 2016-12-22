@@ -22,6 +22,7 @@ import { GetCityWeather } from './pipes/getCityWeather.pipe';
 import { AddSignPipe } from './pipes/sign.pipe';
 // Directives
 import { TempColorDirective } from './directives/tempcolor.directive';
+import { WindDirectionDirective } from './directives/wind-direction.directive';
 
 @NgModule({
     imports: [
@@ -46,7 +47,8 @@ import { TempColorDirective } from './directives/tempcolor.directive';
         GetCityWeather,
         AddSignPipe,
         // Directives
-        TempColorDirective
+        TempColorDirective,
+        WindDirectionDirective
     ],
     providers: [
         WeatherApiService,

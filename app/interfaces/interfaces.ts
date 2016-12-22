@@ -16,6 +16,7 @@ export interface cityDetails {
 	}[];
 	dt: number;
 	fav: boolean;
+	wind: windData;
 }
 
 interface weatherData {
@@ -26,9 +27,16 @@ interface weatherData {
 	temp_min: number;
 }
 
+interface windData {
+	deg: number;
+	gust: number;
+	speed: number;
+}
+
 interface checkboxEventTarget extends EventTarget {
 	checked: boolean;
 }
+
 export interface checkboxEvent extends Event {
 	target: checkboxEventTarget;
 }

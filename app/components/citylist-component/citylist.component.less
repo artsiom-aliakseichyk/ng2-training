@@ -14,28 +14,23 @@
 		width: 100%;
 		font-size: 1.8em;
 		margin-bottom: 10px;
-		&-fav {
-			/*-webkit-flex: 1 1 auto;
-    		-ms-flex: 1 1 auto;
-    		flex: 1 1 auto;*/
-    		-webkit-align-self: center;
+
+		> div {
+			-webkit-align-self: center;
     		-ms-flex-item-align: center;
     		align-self: center;
+		}
+		&-fav {
+    		
 		}
 		&-name {
 			-webkit-flex: 1 1 auto;
 			-ms-flex: 1 1 auto;
 			flex: 1 1 auto;
-			-webkit-align-self: center;
-			-ms-flex-item-align: center;
-			align-self: center;
 			font-weight: bold;
 			padding-left: 10px;
 		}
 		&-date {
-			-webkit-align-self: center;
-			-ms-flex-item-align: center;
-			align-self: center;
 			font-weight: bold;
 			margin-right: 20px;
 		}
@@ -46,18 +41,14 @@
     		-webkit-flex-direction: column;
     		-ms-flex-direction: column;
     		flex-direction: column;
-    		-webkit-justify-content: center;
-    		-ms-flex-pack: center;
-    		justify-content: center;
 			-webkit-align-items: flex-end;
 			-ms-flex-align: end;
 			align-items: flex-end;
-			padding-right: 10px;
+		}
+		&-wind-deg {
+			    margin: 0 10px;
 		}
 		&-opt {
-			-webkit-align-self: center;
-    		-ms-flex-item-align: center;
-    		align-self: center;
     		.delete-button {
     			&:hover {
     				background: #ed4444;
