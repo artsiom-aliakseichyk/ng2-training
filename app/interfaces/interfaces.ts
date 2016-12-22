@@ -15,6 +15,7 @@ export interface cityDetails {
 		main: string; 
 	}[];
 	dt: number;
+	fav: boolean;
 }
 
 interface weatherData {
@@ -23,7 +24,17 @@ interface weatherData {
 	pressure: number;
 	temp_max: number;
 	temp_min: number;
-
 }
 
+interface checkboxEventTarget extends EventTarget {
+	checked: boolean;
+}
+export interface checkboxEvent extends Event {
+	target: checkboxEventTarget;
+}
+
+export interface emmitChangeFavObject {
+	checkbox: boolean;
+	id: number;
+}
 

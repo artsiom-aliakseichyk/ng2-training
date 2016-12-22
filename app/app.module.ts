@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule }  from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 // Components
 import { AppComponent } from './app.component';
 import { WeatherHeaderComponent } from './components/header-component/header.component';
@@ -10,6 +11,7 @@ import { WeatherMapComponent } from './components/map-component/map.component';
 import { WeatherCityComponent } from './components/citylist-component/citylist.component';
 import { WeatherCityPaginatorComponent } from './components/citylist-paginator-component/citylist-paginator.component';
 import { CityDataInfoComponent } from './components/citydata-sample/citydata.component';
+import { CityDataAddComponent } from './components/citydata-add-city/citydata-addcity.component';
 // Services
 import { WeatherApiService } from './services/weather-api.service';
 import GoogleMapService from './services/google-map-init.service';
@@ -22,7 +24,9 @@ import { AddSignPipe } from './pipes/sign.pipe';
 @NgModule({
     imports: [
         BrowserModule,
-        HttpModule
+        HttpModule,
+        FormsModule,
+        ReactiveFormsModule
     ],
     declarations: [
         AppComponent,
@@ -33,6 +37,7 @@ import { AddSignPipe } from './pipes/sign.pipe';
         WeatherCityComponent,
         WeatherCityPaginatorComponent,
         CityDataInfoComponent,
+        CityDataAddComponent,
         // Pipes
         TemperatureConverter,
         FloorPipe,

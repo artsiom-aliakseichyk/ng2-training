@@ -20,7 +20,7 @@ export class WeatherApiService {
         searchParams.set('lon', position.longitude.toString());
         searchParams.set('lat', position.latitude.toString());
         searchParams.set('cnt', CONSTS.ITEMS_IN_RESPONSE);
-        return this.http.get(/*this.weatherURL + endPoint, {search: searchParams}*/'public/find.json')
+        return this.http.get(this.weatherURL + endPoint, {search: searchParams}/*'public/find.json'*/)
                 .map(response => response.json().list);
     }
 }
