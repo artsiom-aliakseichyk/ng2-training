@@ -1,18 +1,15 @@
-import { Directive, Input, TemplateRef, ViewContainerRef } from '@angular/core';
+import { Directive, Input, ElementRef } from '@angular/core';
 
 @Directive({
     selector: '[windDirection]'
 })
 
 export class WindDirectionDirective {
-    constructor(
-        private templateRef: TemplateRef<Object>,
-        private viewContainer: ViewContainerRef) {}
+    constructor(private el: ElementRef) {}
 
     @Input() set windDirection(windDir: number) {
         console.log(windDir);
-        console.log(this.templateRef);
-        this.viewContainer.createEmbeddedView(this.templateRef);
+        this.el.nativeElement.style.transform = "translate(-50%, -50%) rotate(" + windDir + "deg)";
     };
 
 }

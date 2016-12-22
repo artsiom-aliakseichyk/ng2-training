@@ -19,6 +19,7 @@
 			-webkit-align-self: center;
     		-ms-flex-item-align: center;
     		align-self: center;
+    		margin: 0 5px;
 		}
 		&-fav {
     		
@@ -28,11 +29,9 @@
 			-ms-flex: 1 1 auto;
 			flex: 1 1 auto;
 			font-weight: bold;
-			padding-left: 10px;
 		}
 		&-date {
 			font-weight: bold;
-			margin-right: 20px;
 		}
 		&-temp {
 			display: -ms-flexbox;
@@ -46,7 +45,24 @@
 			align-items: flex-end;
 		}
 		&-wind-deg {
-			    margin: 0 10px;
+			position: relative;
+  			padding: 10px;
+  			height: 40px;
+  			width: 40px;
+  			.wind-arrow {
+  				width: 0; 
+  				height: 0; 
+  				border-left: 3px solid transparent;
+  				border-right: 3px solid transparent;
+  				border-bottom: 40px solid black;
+  				position: absolute;
+  				top: 50%;
+  				left: 50%;
+  				transform: translate(-50%, -50%);
+  			}
+		}
+		&-wind-speed {
+			width: 80px;
 		}
 		&-opt {
     		.delete-button {

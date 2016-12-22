@@ -11,9 +11,7 @@ export interface cityDetails {
 		lon: number;
 	};
 	main: weatherData
-	weather: {
-		main: string; 
-	}[];
+	weather: weatherIcon[];
 	dt: number;
 	fav: boolean;
 	wind: windData;
@@ -33,6 +31,12 @@ interface windData {
 	speed: number;
 }
 
+export interface weatherIcon {
+	description: string;
+	icon: string;
+	id: number;
+	main: string;
+}
 interface checkboxEventTarget extends EventTarget {
 	checked: boolean;
 }

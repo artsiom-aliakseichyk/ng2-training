@@ -20,6 +20,7 @@ import { TemperatureConverter } from './pipes/celsius2kelvin.pipe';
 import { FloorPipe } from './pipes/floor.pipe';
 import { GetCityWeather } from './pipes/getCityWeather.pipe';
 import { AddSignPipe } from './pipes/sign.pipe';
+import { GetData } from './pipes/getData.pipe';
 // Directives
 import { TempColorDirective } from './directives/tempcolor.directive';
 import { WindDirectionDirective } from './directives/wind-direction.directive';
@@ -46,6 +47,7 @@ import { WindDirectionDirective } from './directives/wind-direction.directive';
         FloorPipe,
         GetCityWeather,
         AddSignPipe,
+        GetData,
         // Directives
         TempColorDirective,
         WindDirectionDirective
