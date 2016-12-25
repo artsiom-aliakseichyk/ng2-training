@@ -10,6 +10,7 @@ import { cityDetails, checkboxEvent, emmitChangeFavObject  } from '../../interfa
 })
 
 export class WeatherCityComponent {
+    testdata: string = 'hello';
     @Input()
     cityDetails: cityDetails;
 

@@ -12,7 +12,7 @@ import { Observable }     from 'rxjs/Observable';
     selector: 'weather-main',
     templateUrl: './main.component.html',
     styleUrls: ['./main.component.less'],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    // changeDetection: ChangeDetectionStrategy.OnPush
 })
 
 export class WeatherMainComponent implements OnInit, OnDestroy {
@@ -37,9 +37,8 @@ export class WeatherMainComponent implements OnInit, OnDestroy {
                 private zone: NgZone) {}
 
     ngOnInit() {
-        // this.cd.detach();
-        setInterval(() => this.getCityList(), 5000);
-        // this.getCityList();
+        // setInterval(() => this.getCityList(), 5000);
+        this.getCityList();
         this.zoneStableCheck();
     }
 
@@ -63,6 +62,8 @@ export class WeatherMainComponent implements OnInit, OnDestroy {
                 }).subscribe(
                     response => {
                         this.cityDetails = response;
+                        console.log(this.cityDetails);
+                        console.log(this.cityDetails[49].weather[0].icon);
                         this.numOfPages = Math.ceil(this.cityDetails.length / CONSTS.ITEMS_IN_PAGE)
                         this.pagesArr = this.arrayOfPages(this.numOfPages);
                         this.MapInit.init(currentLocation);
@@ -70,7 +71,7 @@ export class WeatherMainComponent implements OnInit, OnDestroy {
                }
             );
         }
-        this.cd.markForCheck();
+        // this.cd.markForCheck();
     }
     changePage(page: number) {
         this.currentPage = page;

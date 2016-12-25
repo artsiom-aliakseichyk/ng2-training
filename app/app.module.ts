@@ -20,6 +20,11 @@ import { TemperatureConverter } from './pipes/celsius2kelvin.pipe';
 import { FloorPipe } from './pipes/floor.pipe';
 import { GetCityWeather } from './pipes/getCityWeather.pipe';
 import { AddSignPipe } from './pipes/sign.pipe';
+import { GetData } from './pipes/getData.pipe';
+// Directives
+import { TempColorDirective } from './directives/tempcolor.directive';
+import { WindDirectionDirective } from './directives/wind-direction.directive';
+import { HideEqualDirective } from './directives/hideEqualWeather.directive';
 
 @NgModule({
     imports: [
@@ -42,7 +47,12 @@ import { AddSignPipe } from './pipes/sign.pipe';
         TemperatureConverter,
         FloorPipe,
         GetCityWeather,
-        AddSignPipe
+        AddSignPipe,
+        GetData,
+        // Directives
+        TempColorDirective,
+        WindDirectionDirective,
+        HideEqualDirective
     ],
     providers: [
         WeatherApiService,

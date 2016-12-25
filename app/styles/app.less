@@ -1,5 +1,13 @@
+// import "./variables";
 @default-font-family: 'Abel', sans-serif;
 @default-font-color: rgba(0, 0, 0, 0.54);
+
+//colors
+@button-background: #fff;
+@button-border-color: rgba(0, 0, 0, 0.54);
+@button-default-color: rgba(0, 0, 0, 0.54);
+
+@input-error-state: #ed4444;
 html {
 	font-family: @default-font-family;
 	font-size: 10px;
@@ -18,4 +26,15 @@ body {
   	-webkit-flex-direction: column;
     -ms-flex-direction: column;
     flex-direction: column;
+}
+
+button {
+    background: @button-background;
+    border: 1px solid @button-border-color;
+    color: @button-default-color;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.8em;
+    cursor: pointer;
+    outline: none;
 }

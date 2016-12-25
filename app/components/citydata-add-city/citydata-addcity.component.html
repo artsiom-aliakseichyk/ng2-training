@@ -1,41 +1,41 @@
-<!-- <form #addCityForm="ngForm" (ngSubmit)="onSubmit(addCityForm.value)" class="addcity-form">
-	<div>
-		<input type="text" placeholder="City name" required [(ngModel)]="city.name">
+<div class="tabs">
+	<div class="tab" (click)="openForm()">Add city</div>
+</div>
+<div class="tabcontent" [ngSwitch]="formToShow">
+	<div *ngSwitchCase="true">
+		<form [formGroup]="addCityForm" (ngSubmit)="addCity(addCityForm.value, addCityForm.valid)" class="addcity-form">
+			<div class="input-wrapper">
+				<label>City Name</label>
+				<input type="text" formControlName="name">
+			</div>
+			<div formGroupName="main">
+				<div class="input-wrapper">
+					<label>Min temp (in C):</label>
+					<input type="number" formControlName="temp_min">
+				</div>
+				<div class="input-wrapper">
+					<label>Avg temp (in C):</label>
+					<input type="number" formControlName="temp">
+				</div>
+				<div class="input-wrapper">
+					<label>Max temp (in C):</label>
+					<input type="number" formControlName="temp_max">
+				</div>
+			</div>
+			<div formGroupName="wind">
+				<div class="input-wrapper">
+					<label>Wind direction (deg):</label>
+					<input type="number" formControlName="deg">
+				</div>
+				<div class="input-wrapper">
+					<label>Wind speed (km/h):</label>
+					<input type="number" formControlName="speed">
+				</div>
+			</div>
+    		<button type="submit" class="submit-button" [disabled]="!addCityForm.valid">Submit</button>
+		</form>
 	</div>
-	<div>
-		<input type="number" placeholder="Min. temperature" required [(ngModel)]="city.mintemp">
+	<div *ngSwitchCase="false">
+		Here will be any functionality soon. 
 	</div>
-	<div>
-		<input type="number" placeholder="Avg. temperature" required [(ngModel)]="city.avgtemp">
-	</div>
-	<div>
-		<input type="number" placeholder="Max. temperature" required [(ngModel)]="city.maxtemp">
-	</div>
-	<div>
-		<label>Add to favorite: </label>
-		<input type="checkbox" placeholder="Min. temperature">
-	</div>
-	<input type="submit" value="Add city">
-</form> -->
-
-<form [formGroup]="addCityForm" novalidate (ngSubmit)="addCity(addCityForm.value)" class="addcity-form">
-	<div>
-		<label>City Name</label>
-		<input type="text" formControlName="name">
-	</div>
-	<div formGroupName="main">
-		<div>
-			<label>Min temp</label>
-			<input type="number" formControlName="temp_min">
-		</div>
-		<div>
-			<label>Avg temp</label>
-			<input type="number" formControlName="temp">
-		</div>
-		<div>
-			<label>Max temp</label>
-			<input type="number" formControlName="temp_max">
-		</div>
-	</div>
-    <button type="submit">Submit</button>
-</form>
+</div>

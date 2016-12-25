@@ -1,5 +1,47 @@
+.tabs {
+	font-size: 1.8em;
+	.tab {
+		cursor: pointer;
+		display: inline-block;
+		&:hover {
+			text-decoration: underline;
+		}
+	}
+}
+
+.tabcontent {
+	font-size: 1.8em;
+}
 .addcity-form {
+	.input-wrapper {
+		margin: 5px 0;
+	}
+	label {
+		font-size: 0.9em;
+		width: 105px;
+    	display: inline-block;
+    }
 	input {
-		font-size: 1.8em;
+		font-size: 1em;
+		outline: 0;
+		&.ng-invalid.ng-touched {
+			border: 1px solid #ed4444;
+			
+		}
+	}
+	.submit-button {
+		font-size: 0.8em;
+    	text-transform: uppercase;
+    	background: #1cbf4a;
+    	color: #fff;
+    	border-color: #fff;
+    	&:hover {
+    		background: #1b9e40;
+    	}
+    	&:disabled {
+    		color: rgba(0, 0, 0, 0.54);
+    		background: rgba(128, 128, 128, 0.38);
+    		cursor: default;
+    	}
 	}
 }

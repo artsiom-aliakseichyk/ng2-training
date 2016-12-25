@@ -1,13 +1,25 @@
 <li class='city-list-item'>
-	<div class='city-list-item-fav'><input type='checkbox' [attr.checked]="cityDetails.fav" (change)="favCheckboxChange($event, cityDetails.id)"></div>
+	<div class='city-list-item-fav'><input type='checkbox' [attr.checked]="cityDetails.fav" (change)="favCheckboxChange($event, cityDetails.id)">
+	</div>
 	<div class='city-list-item-name'>{{cityDetails.name | uppercase}}</div>
 	<div class="city-list-item-date">Last update: {{cityDetails.dt * 1000 | date}}</div>
 	<div class='city-list-item-temp'>
-		<div class='city-list-item-temp-min'>Min.temp: {{cityDetails.main.temp_min | sgTemperature: '2K' | sgFloor: 1}}</div>
-		<div class='city-list-item-temp-avg'>Avg.temp: {{cityDetails.main.temp | sgTemperature: '2K' | sgFloor: 1}}</div>
-		<div class='city-list-item-temp-max'>Max.temp: {{cityDetails.main.temp_max | sgTemperature: '2K' | sgFloor: 1}}</div>
+		<div class='city-list-item-temp-min'
+			*hideEqual='cityDetails.main.temp_min === cityDetails.main.temp && cityDetails.main.temp_max === cityDetails.main.temp'>Min.temp: {{cityDetails.main.temp_min | sgTemperature: '2K' | sgFloor: 1}}</div>
+		<div class='city-list-item-temp-avg' [tempColor]='cityDetails.main.temp'>Avg.temp: {{cityDetails.main.temp | sgTemperature: '2K' | sgFloor: 1}}</div>
+		<div class='city-list-item-temp-max'
+		*hideEqual='cityDetails.main.temp_min === cityDetails.main.temp && cityDetails.main.temp_max === cityDetails.main.temp'>Max.temp: {{cityDetails.main.temp_max | sgTemperature: '2K' | sgFloor: 1}}</div>
+	</div>
+	<div class="city-list-item-wind-deg" >
+		<div class="wind-arrow" [windDirection]='cityDetails.wind.deg'></div>
+	</div>
+	<div class="city-list-item-wind-speed" >
+		{{cityDetails.wind.speed}} km/h
+	</div>
+	<div class="city-list-item-icon">
+		<img src="{{cityDetails.weather | sgGetData: 'icon'}}" alt="{{cityDetails.weather | sgGetData: 'description'}}"/>
 	</div>
 	<div class="city-list-item-opt">
-		<button (click)="getIDtoDeleteCity(cityDetails.id)">Delete</button>
+		<button (click)="getIDtoDeleteCity(cityDetails.id)" class="delete-button">Delete</button>
 	</div>
 </li>
