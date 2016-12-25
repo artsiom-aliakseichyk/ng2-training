@@ -11,6 +11,7 @@ import { cityDetails } from '../../interfaces/interfaces';
 export class CityDataAddComponent implements OnInit {
     public addCityForm: FormGroup;
     public submitted: boolean;
+    public formToShow: boolean = false;
 
     @Output() addCityInfo = new EventEmitter<cityDetails>();
     constructor(private fb: FormBuilder) {}
@@ -31,7 +32,20 @@ export class CityDataAddComponent implements OnInit {
     }
 
     addCity(data: cityDetails, isValid: boolean) {
+        data.weather = [
+            {
+                description: 'default description',
+                icon: "50d",
+                id: 999,
+                main: 'default string'
+
+            }
+        ]
         this.addCityInfo.emit(data);
         this.addCityForm.reset();
+    }
+
+    openForm() {
+        this.formToShow ? this.formToShow = false : this.formToShow = true;
     }
 }
