@@ -49,16 +49,16 @@ export class WeatherMainComponent implements OnInit, OnDestroy {
     }
 
     getCityList() {
-        // if (navigator.geolocation) {
-        //     navigator.geolocation.getCurrentPosition((position: Position) => {
-        //         let currentLocation: Coords = position.coords;
-        //         this.weatherData = this.extractWeatherData = this.WeatherApi.getWeatherData({
-        //             latitude: currentLocation.latitude,
-        //             longitude: currentLocation.longitude
-        //         });
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition((position: Position) => {
+                let currentLocation: Coords = position.coords;
+                this.weatherData = this.extractWeatherData = this.WeatherApi.getWeatherData({
+                    latitude: currentLocation.latitude,
+                    longitude: currentLocation.longitude
+                });
                 this.subscription = this.WeatherApi.getWeatherData({
-                    latitude: 1, // currentLocation.latitude,
-                    longitude: 1 // currentLocation.longitude
+                    latitude: currentLocation.latitude,
+                    longitude: currentLocation.longitude
                 }).subscribe(
                     response => {
                         this.cityDetails = response;
@@ -66,11 +66,11 @@ export class WeatherMainComponent implements OnInit, OnDestroy {
                         console.log(this.cityDetails[49].weather[0].icon);
                         this.numOfPages = Math.ceil(this.cityDetails.length / CONSTS.ITEMS_IN_PAGE)
                         this.pagesArr = this.arrayOfPages(this.numOfPages);
-                        // this.MapInit.init(currentLocation);
+                        this.MapInit.init(currentLocation);
                     });
-               // }
-        //     );
-        // }
+               }
+            );
+        }
         // this.cd.markForCheck();
     }
     changePage(page: number) {

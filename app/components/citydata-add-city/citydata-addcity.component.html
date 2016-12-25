@@ -17,5 +17,15 @@
 			<input type="number" formControlName="temp_max">
 		</div>
 	</div>
+	<div formGroupName="wind">
+		<div class="input-wrapper">
+			<label>Wind direction (deg):</label>
+			<input type="number" formControlName="deg">
+		</div>
+		<div class="input-wrapper">
+			<label>Wind speed (km/h):</label>
+			<input type="number" formControlName="speed">
+		</div>
+	</div>
     <button type="submit" class="submit-button" [disabled]="!addCityForm.valid">Submit</button>
 </form>

@@ -22,6 +22,10 @@ export class CityDataAddComponent implements OnInit {
                 temp_min: ['', Validators.required],
                 temp: ['', Validators.required],
                 temp_max: ['', Validators.required]
+            }),
+            wind: this.fb.group({
+                deg: [0, Validators.required],
+                speed: [0, Validators.required]
             })
         })
     }

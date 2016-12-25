@@ -10,10 +10,10 @@ export class HideEqualDirective {
     ) {}
     @Input() set hideEqual(toHide: boolean) {
         if (toHide) {
-            this.viewContainer.createEmbeddedView(this.templateRef);
+            this.viewContainer.clear();
         }
         else {
-            this.viewContainer.clear();
+            this.viewContainer.createEmbeddedView(this.templateRef);
         }
     }
 }
