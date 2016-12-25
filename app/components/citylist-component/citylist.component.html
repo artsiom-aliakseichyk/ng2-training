@@ -3,10 +3,11 @@
 	<div class='city-list-item-name'>{{cityDetails.name | uppercase}}</div>
 	<div class="city-list-item-date">Last update: {{cityDetails.dt * 1000 | date}}</div>
 	<div class='city-list-item-temp'>
-		<div class='city-list-item-temp-min'>Min.temp: {{cityDetails.main.temp_min | sgTemperature: '2K' | sgFloor: 1}}</div>
-		<!-- <div class='city-list-item-temp-avg' tempColor>Avg.temp: {{cityDetails.main.temp | sgTemperature: '2K' | sgFloor: 1}}</div> -->
+		<div class='city-list-item-temp-min'
+			*hideEqual='cityDetails.main.temp_min === cityDetails.main.temp_max === cityDetails.main.temp'>Min.temp: {{cityDetails.main.temp_min | sgTemperature: '2K' | sgFloor: 1}}</div>
 		<div class='city-list-item-temp-avg' [tempColor]='cityDetails.main.temp'>Avg.temp: {{cityDetails.main.temp | sgTemperature: '2K' | sgFloor: 1}}</div>
-		<div class='city-list-item-temp-max'>Max.temp: {{cityDetails.main.temp_max | sgTemperature: '2K' | sgFloor: 1}}</div>
+		<div class='city-list-item-temp-max'
+		*hideEqual='cityDetails.main.temp_min === cityDetails.main.temp_max === cityDetails.main.temp'>Max.temp: {{cityDetails.main.temp_max | sgTemperature: '2K' | sgFloor: 1}}</div>
 	</div>
 	<div class="city-list-item-wind-deg" >
 		<div class="wind-arrow" [windDirection]='cityDetails.wind.deg'></div>
@@ -16,21 +17,8 @@
 	</div>
 	<div class="city-list-item-icon">
 		<img src="{{cityDetails.weather | sgGetData: 'icon'}}" alt="{{cityDetails.weather | sgGetData: 'description'}}"/>
-		<!-- <p>{{cityDetails.weather | sgGetData: 'description'}}</p> -->
 	</div>
-	<!-- <div class="city-list-item-icon" [ngSwitch]="{{cityDetails.weather | sgGetData: 'icon'}}"> -->
-<!-- 		<img *ngSwitchCase="01d" src="http://openweathermap.org/img/w/01d.png" alt="{{cityDetails.weather | sgGetData: 'description'}}" />
-		<img *ngSwitchCase="02d" src="http://openweathermap.org/img/w/02d.png" alt="{{cityDetails.weather | sgGetData: 'description'}}" />
-		<img *ngSwitchCase="03d" src="http://openweathermap.org/img/w/03d.png" alt="{{cityDetails.weather | sgGetData: 'description'}}" />
-		<img *ngSwitchCase="04d" src="http://openweathermap.org/img/w/04d.png" alt="{{cityDetails.weather | sgGetData: 'description'}}" />
-		<img *ngSwitchCase="09d" src="http://openweathermap.org/img/w/09d.png" alt="{{cityDetails.weather | sgGetData: 'description'}}" />
-		<img *ngSwitchCase="10d" src="http://openweathermap.org/img/w/10d.png" alt="{{cityDetails.weather | sgGetData: 'description'}}" />
-		<img *ngSwitchCase="11d" src="http://openweathermap.org/img/w/11d.png" alt="{{cityDetails.weather | sgGetData: 'description'}}" />
-		<img *ngSwitchCase="13d" src="http://openweathermap.org/img/w/13d.png" alt="{{cityDetails.weather | sgGetData: 'description'}}" />
-		<img *ngSwitchCase="50d" src="http://openweathermap.org/img/w/50d.png" alt="{{cityDetails.weather | sgGetData: 'description'}}" /> -->
-	<!-- </div> -->
 	<div class="city-list-item-opt">
 		<button (click)="getIDtoDeleteCity(cityDetails.id)" class="delete-button">Delete</button>
 	</div>
 </li>
-<!-- *windDirection="cityDetails.wind.deg" -->

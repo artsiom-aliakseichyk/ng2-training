@@ -24,6 +24,7 @@ import { GetData } from './pipes/getData.pipe';
 // Directives
 import { TempColorDirective } from './directives/tempcolor.directive';
 import { WindDirectionDirective } from './directives/wind-direction.directive';
+import { HideEqualDirective } from './directives/hideEqualWeather.directive';
 
 @NgModule({
     imports: [
@@ -50,7 +51,8 @@ import { WindDirectionDirective } from './directives/wind-direction.directive';
         GetData,
         // Directives
         TempColorDirective,
-        WindDirectionDirective
+        WindDirectionDirective,
+        HideEqualDirective
     ],
     providers: [
         WeatherApiService,
