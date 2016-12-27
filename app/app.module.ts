@@ -12,6 +12,7 @@ import { WeatherCityComponent } from './components/citylist-component/citylist.c
 import { WeatherCityPaginatorComponent } from './components/citylist-paginator-component/citylist-paginator.component';
 import { CityDataInfoComponent } from './components/citydata-sample/citydata.component';
 import { CityDataAddComponent } from './components/citydata-add-city/citydata-addcity.component';
+import { WeatherIconComponent } from './components/weather-icon-component/weather-icon.component';
 // Services
 import { WeatherApiService } from './services/weather-api.service';
 import GoogleMapService from './services/google-map-init.service';
@@ -24,7 +25,7 @@ import { GetData } from './pipes/getData.pipe';
 // Directives
 import { TempColorDirective } from './directives/tempcolor.directive';
 import { WindDirectionDirective } from './directives/wind-direction.directive';
-import { HideEqualDirective } from './directives/hideEqualWeather.directive';
+import { HideEqualWeatherDirective } from './directives/hideEqualWeather.directive';
 
 @NgModule({
     imports: [
@@ -43,6 +44,7 @@ import { HideEqualDirective } from './directives/hideEqualWeather.directive';
         WeatherCityPaginatorComponent,
         CityDataInfoComponent,
         CityDataAddComponent,
+        WeatherIconComponent,
         // Pipes
         TemperatureConverter,
         FloorPipe,
@@ -52,7 +54,7 @@ import { HideEqualDirective } from './directives/hideEqualWeather.directive';
         // Directives
         TempColorDirective,
         WindDirectionDirective,
-        HideEqualDirective
+        HideEqualWeatherDirective
     ],
     providers: [
         WeatherApiService,

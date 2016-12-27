@@ -1,15 +1,17 @@
 import { Directive, Input, TemplateRef, ViewContainerRef } from '@angular/core';
+import { weatherData } from '../interfaces/interfaces';
 
 @Directive({
-    selector: '[hideEqual]'
+    selector: '[hideEqualWeather]'
 })
-export class HideEqualDirective {
+export class HideEqualWeatherDirective {
     constructor(
         private templateRef: TemplateRef<Object>,
         private viewContainer: ViewContainerRef
     ) {}
-    @Input() set hideEqual(toHide: boolean) {
-        if (toHide) {
+    @Input() set hideEqualWeather(weather: weatherData) {
+        if (weather.temp === weather.temp_min &&
+            weather.temp === weather.temp_max) {
             this.viewContainer.clear();
         }
         else {

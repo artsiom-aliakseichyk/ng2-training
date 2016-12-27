@@ -17,7 +17,7 @@ export interface cityDetails {
 	wind: windData;
 }
 
-interface weatherData {
+export interface weatherData {
 	temp: number;
 	humidity: number;
 	pressure: number;
