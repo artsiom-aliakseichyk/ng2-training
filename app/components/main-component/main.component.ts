@@ -62,8 +62,6 @@ export class WeatherMainComponent implements OnInit, OnDestroy {
                 }).subscribe(
                     response => {
                         this.cityDetails = response;
-                        console.log(this.cityDetails);
-                        console.log(this.cityDetails[49].weather[0].icon);
                         this.numOfPages = Math.ceil(this.cityDetails.length / CONSTS.ITEMS_IN_PAGE)
                         this.pagesArr = this.arrayOfPages(this.numOfPages);
                         this.MapInit.init(currentLocation);

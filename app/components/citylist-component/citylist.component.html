@@ -5,10 +5,10 @@
 	<div class="city-list-item-date">Last update: {{cityDetails.dt * 1000 | date}}</div>
 	<div class='city-list-item-temp'>
 		<div class='city-list-item-temp-min'
-			*hideEqual='cityDetails.main.temp_min === cityDetails.main.temp && cityDetails.main.temp_max === cityDetails.main.temp'>Min.temp: {{cityDetails.main.temp_min | sgTemperature: '2K' | sgFloor: 1}}</div>
-		<div class='city-list-item-temp-avg' [tempColor]='cityDetails.main.temp'>Avg.temp: {{cityDetails.main.temp | sgTemperature: '2K' | sgFloor: 1}}</div>
+			*hideEqualWeather='cityDetails.main'>Min.temp: {{cityDetails.main.temp_min}}</div>
+		<div class='city-list-item-temp-avg' [tempColor]='cityDetails.main.temp'>Temp: {{cityDetails.main.temp}}</div>
 		<div class='city-list-item-temp-max'
-		*hideEqual='cityDetails.main.temp_min === cityDetails.main.temp && cityDetails.main.temp_max === cityDetails.main.temp'>Max.temp: {{cityDetails.main.temp_max | sgTemperature: '2K' | sgFloor: 1}}</div>
+			*hideEqualWeather='cityDetails.main'>Max.temp: {{cityDetails.main.temp_max}}</div>
 	</div>
 	<div class="city-list-item-wind-deg" >
 		<div class="wind-arrow" [windDirection]='cityDetails.wind.deg'></div>
@@ -17,7 +17,7 @@
 		{{cityDetails.wind.speed}} km/h
 	</div>
 	<div class="city-list-item-icon">
-		<img src="{{cityDetails.weather | sgGetData: 'icon'}}" alt="{{cityDetails.weather | sgGetData: 'description'}}"/>
+		<weather-icon [weather]="cityDetails.weather[0]"></weather-icon>
 	</div>
 	<div class="city-list-item-opt">
 		<button (click)="getIDtoDeleteCity(cityDetails.id)" class="delete-button">Delete</button>
