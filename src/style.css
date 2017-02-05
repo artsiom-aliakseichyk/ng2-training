@@ -1,0 +1,30 @@
+html {
+	font-family: 'Abel', sans-serif;
+	font-size: 10px;
+	color: rgba(0, 0, 0, 0.54);
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+	margin: 0;
+	display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+  	-webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+}
+
+button {
+    background: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.54);
+    color: rgba(0, 0, 0, 0.54);
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.8em;
+    cursor: pointer;
+    outline: none;
+}

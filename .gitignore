@@ -2,3 +2,9 @@ node_modules
 .DS_store
 dist
 npm-debug.log
+build
+tmp
+*.ngfactory.ts
+*.ngstyle.ts
+*.shim.ts
+*.ngsummary.json

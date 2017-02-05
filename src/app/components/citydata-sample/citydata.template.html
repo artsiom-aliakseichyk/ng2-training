@@ -1,0 +1,6 @@
+<div class="citydata-wrapper">
+    <input type="text" #city>
+    <button (click)="getCityWeather(city.value)">Get weather</button>
+    <p class="citydata-info">Custom pipe. Weather for {{cityName}} is {{cityName | sgWeather | sgTemperature: '2K' | sgSign}}</p>
+    <p class="citydata-info">Async pipe. Weather for {{cityName}} is {{cityInfo | async | sgTemperature: '2K' | sgSign}}</p>
+</div>

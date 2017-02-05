@@ -1,0 +1,8 @@
+.citydata-wrapper {
+	max-width: 800px;
+    margin: 0 auto;
+}
+
+.citydata-wrapper * {
+	font-size: 1.8em;
+}

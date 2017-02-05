@@ -1,0 +1,53 @@
+.tabs {
+	font-size: 1.8em;
+}
+
+.tabs .tab {
+	cursor: pointer;
+	display: inline-block;
+}
+
+.tabs .tab:hover {
+	text-decoration: underline;
+}
+
+.tabcontent {
+	font-size: 1.8em;
+}
+
+.addcity-form .input-wrapper {
+	margin: 5px 0;
+}
+
+.addcity-form label {
+	font-size: 0.9em;
+	width: 105px;
+    display: inline-block;
+}
+
+.addcity-form input {
+	font-size: 1em;
+	outline: 0;
+}
+
+.addcity-form input.ng-invalid.ng-touched {
+	border: 1px solid #ed4444;
+}
+
+.addinput-form .submit-button {
+	font-size: 0.8em;
+    text-transform: uppercase;
+    background: #1cbf4a;
+    color: #fff;
+    border-color: #fff;
+}
+
+.addinput-form .submit-button:hover {
+	background: #1b9e40;
+}
+
+.addinput-form .submit-button:disabled {
+	color: rgba(0, 0, 0, 0.54);
+    background: rgba(128, 128, 128, 0.38);
+    cursor: default;
+}
