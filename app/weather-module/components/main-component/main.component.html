@@ -1,0 +1,14 @@
+<main class="content-wrapper weather-main">
+	<city-data></city-data>
+	<div class='cities-wrapper'>
+		<city-data-add (addCityInfo)="addCityInfo($event)"></city-data-add>
+		<weather-city-item 
+		*ngFor="let city of cityDetails|slice:pageStartItemIndex:pagesFinishItemIndex" 
+		[cityDetails]="city" 
+		(deleteCityInfo)="deleteCityInfo($event)" 
+		(changeFavStatus)="changeFavStatus($event)">
+		</weather-city-item>
+		<weather-paginator [pagesArr]="pagesArr"  (changePage)="changePage($event)"></weather-paginator>
+	</div>
+	<div class="loader" [style.display]="cityDetails ? 'none': 'block'"></div>
+</main>
