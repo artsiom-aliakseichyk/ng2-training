@@ -1,0 +1,7 @@
+.input-wrapper > .ng-invalid {
+	border-color: red;
+}
+
+.input-wrapper > input {
+	outline: none;
+}

@@ -1,6 +1,6 @@
 import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
-
-import { cityDetails, checkboxEvent, emmitChangeFavObject  } from '../../interfaces/interfaces';
+import { VIEW_MODEL_CONFIG } from '../../config';
+import { cityDetails, checkboxEvent, emmitChangeFavObject, viewModel  } from '../../interfaces/interfaces';
 
 @Component({
     selector: 'weather-city-item',
@@ -10,9 +10,12 @@ import { cityDetails, checkboxEvent, emmitChangeFavObject  } from '../../interfa
 })
 
 export class WeatherCityComponent {
-    testdata: string = 'hello';
+    // viewmodel = VIEW_MODEL_CONFIG;
     @Input()
     cityDetails: cityDetails;
+
+    @Input()
+    viewmodel: viewModel;
 
     @Output() deleteCityInfo = new EventEmitter<number>();
     @Output() changeFavStatus = new EventEmitter<emmitChangeFavObject>();

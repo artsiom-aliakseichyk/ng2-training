@@ -50,3 +50,12 @@ export interface emmitChangeFavObject {
 	id: number;
 }
 
+export interface viewModel {
+	updatedate: boolean,
+	winddirection: boolean,
+	windspeed: boolean,
+	weathericon: boolean,
+	citieslimit?: number,
+	tempkey?: string
+
+}

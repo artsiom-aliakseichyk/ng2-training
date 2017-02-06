@@ -2,9 +2,11 @@
 	<city-data></city-data>
 	<div class='cities-wrapper'>
 		<city-data-add (addCityInfo)="addCityInfo($event)"></city-data-add>
+		<weather-filter (updateViewModel)="updateViewModel($event)"></weather-filter>
 		<weather-city-item 
 		*ngFor="let city of cityDetails|slice:pageStartItemIndex:pagesFinishItemIndex" 
 		[cityDetails]="city" 
+		[viewmodel]="viewmodel"
 		(deleteCityInfo)="deleteCityInfo($event)" 
 		(changeFavStatus)="changeFavStatus($event)">
 		</weather-city-item>

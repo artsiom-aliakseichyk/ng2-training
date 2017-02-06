@@ -1,0 +1,31 @@
+<div>
+	<form class='form-filter' [formGroup]="filterForm" (ngSubmit)="applyFilter(filterForm.value, filterForm.valid)">
+		<div class="input-wrapper">
+			<label>Update date</label>
+			<input type="checkbox" formControlName="updatedate">
+		</div>
+		<div class="input-wrapper">
+			<label>Wind speed</label>
+			<input type="checkbox" formControlName="windspeed">
+		</div>
+		<div class="input-wrapper">
+			<label>Wind direction</label>
+			<input type="checkbox" formControlName="winddirection">
+		</div>
+		<div class="input-wrapper">
+			<label>Weather icon</label>
+			<input type="checkbox" formControlName="weathericon">
+		</div>
+		<div class="input-wrapper">
+			<label>Cities limit</label>
+			<input type="number" formControlName="citieslimit">
+			<weather-filter-message [filterFormInput]="filterForm.get('citieslimit')"></weather-filter-message>
+		</div>
+		<div class="input-wrapper">
+			<label>Switch temp value (K or C)</label>
+			<temp-key formControlName="tempkey"></temp-key>
+			<weather-filter-message [filterFormInput]="filterForm.get('tempkey')"></weather-filter-message>
+		</div>
+		<button type="submit" class="submit-button">Submit</button>
+	</form>
+</div>

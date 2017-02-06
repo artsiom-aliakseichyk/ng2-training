@@ -10,8 +10,10 @@ import { CityDataInfoComponent } from '../components/citydata-sample/citydata.co
 import { CityDataAddComponent } from '../components/citydata-add-city/citydata-addcity.component';
 import { WeatherCityComponent } from '../components/citylist-component/citylist.component';
 import { WeatherCityPaginatorComponent } from '../components/citylist-paginator-component/citylist-paginator.component';
-
+import { FilterComponent } from '../components/filter-component/filter.component';
 import { WeatherIconComponent } from '../components/weather-icon-component/weather-icon.component';
+import { FilterMessageComponent } from '../components/filter-error-component/filter-error.component';
+import { TemperatureKeyComponent } from '../components/custom-form-control-component/custom-control.component';
 import { HideEqualWeatherDirective } from '../shared/directives/hideEqualWeather.directive';
 import { TempColorDirective } from '../shared/directives/tempcolor.directive';
 import { WindDirectionDirective } from '../shared/directives/wind-direction.directive';
@@ -31,9 +33,12 @@ import { WeatherApiService } from '../services/weather-api.service';
         WeatherCityComponent,
         WeatherCityPaginatorComponent,
         WeatherIconComponent,
+        FilterComponent,
         HideEqualWeatherDirective,
         TempColorDirective,
-        WindDirectionDirective
+        WindDirectionDirective,
+        FilterMessageComponent,
+        TemperatureKeyComponent
     ],
     providers: [
         WeatherApiService
