@@ -13,7 +13,6 @@ export class FilterMessageComponent implements DoCheck {
     @Input() filterFormInput: any;
 
     ngDoCheck(): void {
-    	console.log(this.filterFormInput);
     	if (this.filterFormInput.dirty && !this.filterFormInput.valid) {
     		for (let error in this.filterFormInput.errors) {
     			if (error === 'validateLimits') {
