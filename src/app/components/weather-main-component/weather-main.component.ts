@@ -7,6 +7,8 @@ import { CONSTS } from '../../config';
 import { Subscription }   from 'rxjs/Subscription';
 import { Observable }     from 'rxjs/Observable';
 import { LoggerService } from '../../services/logger.service';
+import { viewModel } from '../../interfaces/interfaces';
+import { VIEW_MODEL_CONFIG } from '../../config';
 
 @Component({
     selector: 'weather-main',
@@ -28,7 +30,8 @@ export class WeatherMainComponent implements OnInit, OnDestroy, OnChanges {
     weatherData: Observable<cityDetails[]>;
     extractWeatherData: Observable<cityDetails[]>;
     pageStartItemIndex: number = 0;
-    pagesFinishItemIndex: number = CONSTS.ITEMS_IN_PAGE;
+    pagesFinishItemIndex: number = VIEW_MODEL_CONFIG.citieslimit;
+    viewmodel:viewModel = VIEW_MODEL_CONFIG;
 
 
     constructor(private WeatherApi: WeatherApiService,
@@ -66,7 +69,7 @@ export class WeatherMainComponent implements OnInit, OnDestroy, OnChanges {
                 }).subscribe(
                     response => {
                         this.cityDetails = response;
-                        this.numOfPages = Math.ceil(this.cityDetails.length / CONSTS.ITEMS_IN_PAGE)
+                        this.numOfPages = Math.ceil(this.cityDetails.length / VIEW_MODEL_CONFIG.citieslimit)
                         this.pagesArr = this.arrayOfPages(this.numOfPages);
                         this.MapInit.init(currentLocation);
                         this.logger.success("App init!");
@@ -78,8 +81,8 @@ export class WeatherMainComponent implements OnInit, OnDestroy, OnChanges {
     }
     changePage(page: number) {
         this.currentPage = page;
-        this.pageStartItemIndex = this.currentPage * CONSTS.ITEMS_IN_PAGE;
-        this.pagesFinishItemIndex = (this.currentPage + 1) * CONSTS.ITEMS_IN_PAGE;
+        this.pageStartItemIndex = this.currentPage * VIEW_MODEL_CONFIG.citieslimit;
+        this.pagesFinishItemIndex = (this.currentPage + 1) * VIEW_MODEL_CONFIG.citieslimit;
         this.logger.log("Page: " + (this.currentPage + 1));
     }
 
@@ -88,7 +91,7 @@ export class WeatherMainComponent implements OnInit, OnDestroy, OnChanges {
         for (let i = 0; i < this.cityDetails.length; i++) {
             if (this.cityDetails[i].id === id) {
                 this.cityDetails.splice(i, 1);
-                tempNumOfPages = Math.ceil(this.cityDetails.length / CONSTS.ITEMS_IN_PAGE);
+                tempNumOfPages = Math.ceil(this.cityDetails.length / VIEW_MODEL_CONFIG.citieslimit);
                 if (tempNumOfPages !== this.numOfPages) {
                     this.pagesArr = this.arrayOfPages(tempNumOfPages);
                 }
@@ -96,11 +99,23 @@ export class WeatherMainComponent implements OnInit, OnDestroy, OnChanges {
         }
     }
 
+    updateViewModel(viewModel: viewModel) {
+        this.viewmodel = viewModel;
+        this.viewmodel.tempkey = '2' + this.viewmodel.tempkey.toUpperCase();
+        if (viewModel.citieslimit) {
+            //reset pages
+            this.pageStartItemIndex = 0;
+            this.pagesFinishItemIndex = viewModel.citieslimit;
+            this.numOfPages = Math.ceil(this.cityDetails.length / viewModel.citieslimit);
+            this.pagesArr = this.arrayOfPages(this.numOfPages);
+        }
+    }
+
     addCityInfo(cityInfo: cityDetails) {
         let tempNumOfPages: number;
         cityInfo.dt = Date.now() / 1000;
         this.cityDetails.unshift(cityInfo);
-        tempNumOfPages = Math.ceil(this.cityDetails.length / CONSTS.ITEMS_IN_PAGE);
+        tempNumOfPages = Math.ceil(this.cityDetails.length / VIEW_MODEL_CONFIG.citieslimit);
         if (tempNumOfPages !== this.numOfPages) {
             this.pagesArr = this.arrayOfPages(tempNumOfPages);
         }

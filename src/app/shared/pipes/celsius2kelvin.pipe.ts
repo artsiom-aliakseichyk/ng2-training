@@ -10,7 +10,7 @@ export class TemperatureConverter implements PipeTransform {
                 temp = +value + 273.15;
             }
             else {
-                temp = +value - 273.15;
+                temp = +value;
             }
             return temp;
         }
