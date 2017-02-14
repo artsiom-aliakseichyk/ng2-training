@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Response } from '@angular/http';
 import { WeatherApiService } from '../../services/weather-api.service';
-import { GoogleMapService } from '../../services/map-init.service';
+// import { GoogleMapService } from '../../services/map-init.service';
 import { cityDetails, Coords, emmitChangeFavObject, citiesReducer } from '../../interfaces/interfaces';
 import { CONSTS } from '../../config';
 import { Subscription }   from 'rxjs/Subscription';
@@ -40,7 +40,7 @@ export class WeatherMainComponent implements OnInit, OnDestroy {
     constructor(
                 private store: Store<WeatherState>,
                 private weatherActions: WeatherActions,
-                private MapInit: GoogleMapService,
+                // private MapInit: GoogleMapService,
                 private logger: LoggerService) {}
 
     ngOnInit() {
@@ -70,7 +70,7 @@ export class WeatherMainComponent implements OnInit, OnDestroy {
                                     this.cityDetails = response.cityDetails;
                                     this.numOfPages = Math.ceil(this.cityDetails.length / VIEW_MODEL_CONFIG.citieslimit)
                                     this.pagesArr = this.arrayOfPages(this.numOfPages);
-                                    this.MapInit.init(currentLocation);
+                                    // this.MapInit.init(currentLocation);
                                     this.logger.success("App init!");
                                 }
                                 else {
