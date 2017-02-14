@@ -1,3 +1,5 @@
+import {Response} from "@angular/http";
+
 export interface Coords {
 	longitude: number;
 	latitude: number;
@@ -58,4 +60,10 @@ export interface viewModel {
 	citieslimit?: number,
 	tempkey?: string
 
+}
+
+
+export interface citiesReducer {
+    cityDetails?: cityDetails[];
+    error?: Response;
 }

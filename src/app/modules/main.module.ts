@@ -10,6 +10,13 @@ import { MapModule } from './map.module';
 import { AppComponent } from '../components/app-component/app.component';
 export { AppComponent };
 
+import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { EffectsModule } from '@ngrx/effects';
+import { WeatherEffects } from '../rx/effects';
+import { WeatherActions } from '../rx/actions';
+import { reducer } from '../rx/reducers';
+
 @NgModule({
     imports: [
         BrowserModule,
@@ -18,10 +25,16 @@ export { AppComponent };
         ReactiveFormsModule,
         CoreModule,
         MapModule,
-        WeatherModule
+        WeatherModule,
+        StoreModule.provideStore(reducer),
+        EffectsModule.run(WeatherEffects),
+        StoreDevtoolsModule.instrumentOnlyWithExtension()
     ],
     declarations: [
         AppComponent
+    ],
+    providers: [
+        WeatherActions
     ],
     bootstrap: [ AppComponent ]
 })

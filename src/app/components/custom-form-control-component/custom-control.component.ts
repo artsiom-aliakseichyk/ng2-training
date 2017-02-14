@@ -4,13 +4,6 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR, NG_VALIDATORS, FormControl } f
 @Component({
     selector: 'temp-key',
     templateUrl: './custom-control.template.html',
-  //   template: `
-		// <input
-		// 	[value]='tempKey'
-		// 	(change)="onChange($event)"
-		// 	(keyup)="onChange($event)">
-		// </input>
-  //   `,
     providers: [{
     	provide: NG_VALUE_ACCESSOR,
     	useExisting: forwardRef(() => TemperatureKeyComponent),
@@ -24,7 +17,6 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR, NG_VALIDATORS, FormControl } f
 })
 
 export class TemperatureKeyComponent implements ControlValueAccessor {
-
 	private rawdata: string;
     private parseError: boolean;
 	public writeValue(key: string) {
