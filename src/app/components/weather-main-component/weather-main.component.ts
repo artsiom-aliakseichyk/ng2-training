@@ -1,7 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Response } from '@angular/http';
 import { WeatherApiService } from '../../services/weather-api.service';
-// import { GoogleMapService } from '../../services/map-init.service';
 import { cityDetails, Coords, emmitChangeFavObject, citiesReducer } from '../../interfaces/interfaces';
 import { CONSTS } from '../../config';
 import { Subscription }   from 'rxjs/Subscription';
@@ -40,7 +39,6 @@ export class WeatherMainComponent implements OnInit, OnDestroy {
     constructor(
                 private store: Store<WeatherState>,
                 private weatherActions: WeatherActions,
-                // private MapInit: GoogleMapService,
                 private logger: LoggerService) {}
 
     ngOnInit() {
