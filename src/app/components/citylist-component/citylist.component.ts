@@ -1,6 +1,6 @@
 import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
-import { VIEW_MODEL_CONFIG } from '../../config';
 import { cityDetails, checkboxEvent, emmitChangeFavObject, viewModel  } from '../../interfaces/interfaces';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'weather-city-item',
@@ -10,7 +10,7 @@ import { cityDetails, checkboxEvent, emmitChangeFavObject, viewModel  } from '..
 })
 
 export class WeatherCityComponent {
-    // viewmodel = VIEW_MODEL_CONFIG;
+    constructor(private router: Router) { }
     @Input()
     cityDetails: cityDetails;
 
@@ -26,5 +26,9 @@ export class WeatherCityComponent {
 
     favCheckboxChange(event: checkboxEvent, id: number ) {
         this.changeFavStatus.emit({checkbox: event.target.checked, id: id});
+    }
+
+    onCitySelect(id: number) {
+        this.router.navigate(['/weather/' + id]);
     }
 }

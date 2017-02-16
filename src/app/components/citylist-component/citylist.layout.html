@@ -1,4 +1,4 @@
-<li class='city-list-item'>
+<li class='city-list-item' (click)="onCitySelect(cityDetails.id)">
 	<div class='city-list-item-fav'><input type='checkbox' [attr.checked]="cityDetails.fav" (change)="favCheckboxChange($event, cityDetails.id)">
 	</div>
 	<div class='city-list-item-name'>{{cityDetails.name | uppercase}}</div>

@@ -3,9 +3,11 @@ import { BrowserModule }  from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+import { RoutingModule } from "./routes.module";
+
 import { CoreModule }       from './core.module';
 import { WeatherModule } from './weather.module';
-import { MapModule } from './map.module';
+// import { MapModule } from './map.module';
 
 import { AppComponent } from '../components/app-component/app.component';
 export { AppComponent };
@@ -24,7 +26,8 @@ import { reducer } from '../rx/reducers';
         FormsModule,
         ReactiveFormsModule,
         CoreModule,
-        MapModule,
+        RoutingModule,
+        // MapModule,
         WeatherModule,
         StoreModule.provideStore(reducer),
         EffectsModule.run(WeatherEffects),

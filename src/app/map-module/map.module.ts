@@ -1,14 +1,16 @@
 import { NgModule } from '@angular/core';
 
-import { WeatherMapComponent } from '../components/map-component/map.component';
+import { WeatherMapComponent } from './map-component/map.component';
 import { GoogleMapService } from '../services/map-init.service';
+import { MapRoutingModule } from './map.routing';
 
 @NgModule({
+	imports: [MapRoutingModule],
     declarations: [WeatherMapComponent],
     providers: [GoogleMapService],
-    exports: [
-        WeatherMapComponent
-    ]
+    // exports: [
+    //     WeatherMapComponent
+    // ]
 })
 
 export class MapModule { }
