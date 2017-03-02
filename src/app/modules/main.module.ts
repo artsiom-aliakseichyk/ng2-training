@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule }  from '@angular/platform-browser';
-import { HttpModule } from '@angular/http';
+import { HttpModule, RequestOptions } from '@angular/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { RoutingModule } from "./routes.module";
@@ -18,6 +18,8 @@ import { EffectsModule } from '@ngrx/effects';
 import { WeatherEffects } from '../rx/effects';
 import { WeatherActions } from '../rx/actions';
 import { reducer } from '../rx/reducers';
+
+import { projectRequestOptions } from '../customRequestOptions';
 
 @NgModule({
     imports: [
@@ -37,7 +39,11 @@ import { reducer } from '../rx/reducers';
         AppComponent
     ],
     providers: [
-        WeatherActions
+        WeatherActions,
+        {
+            provide: RequestOptions,
+            useClass: projectRequestOptions
+        }
     ],
     bootstrap: [ AppComponent ]
 })
