@@ -1,8 +1,6 @@
 import { initialWeatherState, weatherReducer } from './weather.reducer'
 import { WeatherActions } from '../actions/weather.actions';
 
-
-
 const initialState = {
     cityDetails: [],
     error: null
