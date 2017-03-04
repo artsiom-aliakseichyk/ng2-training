@@ -19,5 +19,8 @@ export function weatherReducer(
 		case WeatherActions.WEATHER_LOAD_FAILED: {
 			return Object.assign({}, state, {error: action.payload});
 		}
+		default: {
+            return initialWeatherState;
+        }
 	}
 }
